@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonate Network | Premium Indie Podcast Studio</title>
+    <meta name="description" content="Access ad-free premium RSS feeds, exclusive episodes, behind-the-scenes video drops, and network merchandise discounts. Custom studio production space.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' x2='12' y1='19' y2='22'/%3E%3C/svg%3E">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet Maps CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body class="dark-theme">
+
+    <!-- Global Marketing Header -->
+    <header id="global-header">
+        <div class="header-container">
+            <!-- Logo Section -->
+            <div class="header-logo" id="header-logo-btn">
+                <div class="logo-icon">
+                    <i data-lucide="mic"></i>
+                </div>
+                <span class="logo-text">RESONATE</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <!-- Home Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="home-nav-link">Home <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item" id="go-home1">Home 1</a></li>
+                            <li><a href="#" class="dropdown-item" id="go-home2">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <!-- Standard Links -->
+                    <li class="nav-item"><a href="#" class="nav-link" id="go-about">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" id="go-services">Services</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" id="go-contact">Contact</a></li>
+                    <!-- Dashboard Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="dashboard-nav-link">Dashboard <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item" id="go-user-dash">User Dashboard</a></li>
+                            <li><a href="#" class="dropdown-item" id="go-admin-dash">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right Controls -->
+            <div class="header-controls">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction" title="Toggle RTL/LTR">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+                <!-- Auth Button -->
+                <button class="login-btn" id="header-login-btn">
+                    <i data-lucide="log-in"></i>
+                    <span>Login</span>
+                </button>
+                <!-- User Avatar (Hidden until logged in) -->
+                <div class="user-profile-widget" id="header-user-widget" style="display: none;">
+                    <div class="user-avatar-btn">
+                        <img src="p6.jpg" alt="User profile" id="header-avatar-img">
+                        <span id="header-username">Premium Member</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu" class="menu-open-icon"></i>
+                <i data-lucide="x" class="menu-close-icon" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer-menu">
+        <ul class="mobile-nav-list">
+            <!-- Home Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-home-dropdown-toggle">
+                    <span>Home</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-home-menu" style="display: none;">
+                    <li><a href="#" class="mobile-dropdown-item" id="mob-go-home1">Home 1</a></li>
+                    <li><a href="#" class="mobile-dropdown-item" id="mob-go-home2">Home 2</a></li>
+                </ul>
+            </li>
+            <!-- Standard Links -->
+            <li><a href="#" class="mobile-nav-link" id="mob-go-about">About Us</a></li>
+            <li><a href="#" class="mobile-nav-link" id="mob-go-services">Our Services</a></li>
+            <li><a href="#" class="mobile-nav-link" id="mob-go-contact">Contact Us</a></li>
+            <!-- Dashboard Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-dashboard-dropdown-toggle">
+                    <span>Dashboard</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-dashboard-menu" style="display: none;">
+                    <li><a href="#" class="mobile-dropdown-item" id="mob-go-user-dash">User Dashboard</a></li>
+                    <li><a href="#" class="mobile-dropdown-item" id="mob-go-admin-dash">Admin Dashboard</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="mobile-drawer-controls">
+            <!-- Side-by-side Toggles Row -->
+            <div class="mobile-toggles-row">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+            </div>
+            
+            <button class="drawer-login-btn" id="drawer-login-btn">
+                <i data-lucide="log-in"></i> Login
+            </button>
+            <div class="drawer-user-widget" id="drawer-user-widget" style="display: none; align-items: center; justify-content: space-between; width: 100%; padding: 15px 0 0; border-top: 1px solid var(--border-color);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="p6.jpg" alt="User profile" id="drawer-avatar-img" style="width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--accent-primary);">
+                    <span id="drawer-username" style="font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem;">Premium Member</span>
+                </div>
+                <button class="control-btn logout-link-btn" title="Logout" style="width: 40px; height: 40px; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: var(--accent-secondary); display: flex; align-items: center; justify-content: center;">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content wrapper for Marketing Views -->
+    <div id="marketing-container">
+        
+        <!-- ==================== HOME 1: STUDIO HOME VIEW ==================== -->
+        <main id="home1-view" class="view-panel">
+            <!-- 1. Hero Section -->
+            <section class="hero-section" id="home1-hero">
+                <div class="mesh-gradient"></div>
+                <div class="section-container hero-grid">
+                    <div class="hero-text-content">
+                        <div class="live-badge">
+                            <span class="live-dot"></span>
+                            <span>LIVE FROM RESONATE STUDIOS</span>
+                        </div>
+                        <h1 class="hero-title">Indie Voices.<br><span class="gradient-text">Premium Sound.</span></h1>
+                        <p class="hero-subtitle">The ultimate audio network for independent storytellers, technical geeks, and culture critics. Join for ad-free feeds, behind-the-scenes video drops, and member-only merchandise discounts.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" onclick="scrollToPlayer()">
+                                <i data-lucide="play-circle"></i> Start Listening
+                            </button>
+                            <button class="btn btn-secondary" onclick="navigateToSection('home1-podcasts')">
+                                Explore Our Shows
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-featured-card">
+                        <div class="glass-card featured-show">
+                            <div class="show-cover-wrapper">
+                                <img src="p1.jpg" alt="Featured Show Cover">
+                                <div class="play-overlay" onclick="playEpisode('p1.jpg', 'The Daily Byte', 'EP 124: The Future of Neural Audio Architectures', '124')">
+                                    <i data-lucide="play"></i>
+                                </div>
+                            </div>
+                            <div class="show-info">
+                                <span class="show-tag">Featured Show</span>
+                                <h3 class="show-title">The Daily Byte</h3>
+                                <p class="show-desc">Hosted by Sarah Jenkins. Today's episode explores the integration of neural synthesis and procedural dialogue tools in immersive games.</p>
+                                <div class="show-meta">
+                                    <span><i data-lucide="clock"></i> 48 Mins</span>
+                                    <span><i data-lucide="calendar"></i> Today</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Show Filters & Grid Section -->
+            <section class="section-padding" id="home1-podcasts">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Explore Network Shows</h2>
+                        <p class="section-subtitle">Diverse voices, singular audio quality. Stream right here or subscribe on Spotify & Apple Podcasts.</p>
+                    </div>
+
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">All Shows</button>
+                        <button class="filter-tab" data-filter="tech">Tech & Science</button>
+                        <button class="filter-tab" data-filter="culture">Society & Culture</button>
+                        <button class="filter-tab" data-filter="music">Audio Arts</button>
+                    </div>
+
+                    <div class="shows-grid">
+                        <!-- Show Card 1 -->
+                        <div class="show-card" data-category="tech">
+                            <div class="card-cover">
+                                <img src="p1.jpg" alt="The Daily Byte">
+                                <div class="play-badge" onclick="playEpisode('p1.jpg', 'The Daily Byte', 'EP 124: The Future of Neural Audio Architectures', '124')">
+                                    <i data-lucide="play"></i>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="category-badge">Tech & Science</span>
+                                <h3 class="show-card-title">The Daily Byte</h3>
+                                <p class="show-card-desc">Breaking down complex tech trends, neural interfaces, and the future of web standards daily.</p>
+                                <div class="card-footer-info">
+                                    <span>Host: Sarah Jenkins</span>
+                                    <span>5k+ Listens</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Show Card 2 -->
+                        <div class="show-card" data-category="music">
+                            <div class="card-cover">
+                                <img src="p2.jpg" alt="Behind the Sound">
+                                <div class="play-badge" onclick="playEpisode('p2.jpg', 'Behind the Sound', 'EP 89: Secrets of the Abbey Road Plate Reverbs', '89')">
+                                    <i data-lucide="play"></i>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="category-badge">Audio Arts</span>
+                                <h3 class="show-card-title">Behind the Sound</h3>
+                                <p class="show-card-desc">Exploring production workflows, microphone shootout, and the acoustics of legendary studios.</p>
+                                <div class="card-footer-info">
+                                    <span>Host: Marcus Vance</span>
+                                    <span>3.8k+ Listens</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Show Card 3 -->
+                        <div class="show-card" data-category="culture">
+                            <div class="card-cover">
+                                <img src="p4.jpg" alt="True Crime Decoded">
+                                <div class="play-badge" onclick="playEpisode('p4.jpg', 'True Crime Decoded', 'EP 56: The Cryptic Transmission of 1978', '56')">
+                                    <i data-lucide="play"></i>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="category-badge">Society & Culture</span>
+                                <h3 class="show-card-title">True Crime Decoded</h3>
+                                <p class="show-card-desc">An investigative journey into historical cold cases, audio telemetry clues, and mystery logs.</p>
+                                <div class="card-footer-info">
+                                    <span>Host: Sarah Jenkins</span>
+                                    <span>9.5k+ Listens</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Integrated Audio Player, Episodes list & Transcript Accordions -->
+            <section class="section-padding section-alt" id="home1-player">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Listen Now & Interactive Transcripts</h2>
+                        <p class="section-subtitle">Click to stream, and read along with our word-synced interactive transcripts. Tap a timestamp to jump.</p>
+                    </div>
+
+                    <div class="player-panel-grid">
+                        <!-- Left Panel: Playlist / Recent Releases -->
+                        <div class="recent-episodes-list">
+                            <h3 class="panel-title">Recent Network Releases</h3>
+                            
+                            <!-- Episode Item 1 -->
+                            <div class="episode-row active" onclick="loadTrack('p1.jpg', 'The Daily Byte', 'EP 124: The Future of Neural Audio Architectures', '124')">
+                                <div class="ep-num">124</div>
+                                <div class="ep-details">
+                                    <span class="ep-show">The Daily Byte</span>
+                                    <h4 class="ep-title">The Future of Neural Audio Architectures</h4>
+                                    <span class="ep-meta">Released: 1 day ago • Duration: 48:22</span>
+                                </div>
+                                <div class="ep-actions-group">
+                                    <button class="ep-play-btn" aria-label="Play Track"><i data-lucide="play"></i></button>
+                                    <button class="ep-transcript-toggle" onclick="toggleTranscript('ep124-trans', event)"><i data-lucide="file-text"></i> Transcript</button>
+                                </div>
+                            </div>
+                            <!-- Transcript Accordion 1 -->
+                            <div class="transcript-collapse" id="ep124-trans">
+                                <div class="transcript-content">
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(0)">[00:00]</span> <strong>Sarah Jenkins:</strong> Welcome back to The Daily Byte. Today we're diving deep into neural audio synthesis.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(15)">[00:15]</span> <strong>Sarah Jenkins:</strong> This isn't just about compression. We're talking about model weights replacing traditional waveforms.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(32)">[00:32]</span> <strong>Sarah Jenkins:</strong> Imagine a world where game assets are synthesised locally using tiny vector weights...</p>
+                                </div>
+                            </div>
+
+                            <!-- Episode Item 2 -->
+                            <div class="episode-row" onclick="loadTrack('p2.jpg', 'Behind the Sound', 'EP 89: Secrets of the Abbey Road Plate Reverbs', '89')">
+                                <div class="ep-num">89</div>
+                                <div class="ep-details">
+                                    <span class="ep-show">Behind the Sound</span>
+                                    <h4 class="ep-title">Secrets of the Abbey Road Plate Reverbs</h4>
+                                    <span class="ep-meta">Released: 4 days ago • Duration: 55:10</span>
+                                </div>
+                                <div class="ep-actions-group">
+                                    <button class="ep-play-btn" aria-label="Play Track"><i data-lucide="play"></i></button>
+                                    <button class="ep-transcript-toggle" onclick="toggleTranscript('ep89-trans', event)"><i data-lucide="file-text"></i> Transcript</button>
+                                </div>
+                            </div>
+                            <!-- Transcript Accordion 2 -->
+                            <div class="transcript-collapse" id="ep89-trans">
+                                <div class="transcript-content">
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(0)">[00:00]</span> <strong>Marcus Vance:</strong> Hello and welcome to Behind the Sound. Abbey Road's EMT plate units are legendary.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(20)">[00:20]</span> <strong>Marcus Vance:</strong> Today we examine how tension, temperature, and pickups created that iconic decay.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(45)">[00:45]</span> <strong>Marcus Vance:</strong> Let's load the sound files and listen to the difference in transient response...</p>
+                                </div>
+                            </div>
+
+                            <!-- Episode Item 3 -->
+                            <div class="episode-row" onclick="loadTrack('p3.jpg', 'Indie Wave', 'EP 42: Synthesizing the 80s Revival Scene', '42')">
+                                <div class="ep-num">42</div>
+                                <div class="ep-details">
+                                    <span class="ep-show">Indie Wave</span>
+                                    <h4 class="ep-title">Synthesizing the 80s Revival Scene</h4>
+                                    <span class="ep-meta">Released: 1 week ago • Duration: 62:15</span>
+                                </div>
+                                <div class="ep-actions-group">
+                                    <button class="ep-play-btn" aria-label="Play Track"><i data-lucide="play"></i></button>
+                                    <button class="ep-transcript-toggle" onclick="toggleTranscript('ep42-trans', event)"><i data-lucide="file-text"></i> Transcript</button>
+                                </div>
+                            </div>
+                            <!-- Transcript Accordion 3 -->
+                            <div class="transcript-collapse" id="ep42-trans">
+                                <div class="transcript-content">
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(0)">[00:00]</span> <strong>Elena Rostova:</strong> This is Indie Wave. Synthesizers defined an entire era.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(10)">[00:10]</span> <strong>Elena Rostova:</strong> We look at the Roland Juno-106 and how modern bedroom producers model its chorus filter.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: Big Interactive Audio Deck -->
+                        <div class="audio-deck">
+                            <div class="deck-cover">
+                                <img src="p1.jpg" alt="Active track cover" id="deck-img">
+                                <div class="deck-overlay-effects"></div>
+                            </div>
+                            <div class="deck-now-playing">
+                                <span class="deck-show" id="deck-show-name">The Daily Byte</span>
+                                <h3 class="deck-title" id="deck-title-text">EP 124: The Future of Neural Audio Architectures</h3>
+                            </div>
+                            
+                            <!-- Custom HTML5 Audio Player Interface -->
+                            <div class="player-controls-container">
+                                <!-- Waveform Visualization (Mock) -->
+                                <div class="waveform-visualizer">
+                                    <span class="wave-bar" style="height:20%"></span>
+                                    <span class="wave-bar" style="height:40%"></span>
+                                    <span class="wave-bar" style="height:65%"></span>
+                                    <span class="wave-bar" style="height:80%"></span>
+                                    <span class="wave-bar" style="height:55%"></span>
+                                    <span class="wave-bar" style="height:90%"></span>
+                                    <span class="wave-bar" style="height:70%"></span>
+                                    <span class="wave-bar" style="height:45%"></span>
+                                    <span class="wave-bar" style="height:35%"></span>
+                                    <span class="wave-bar" style="height:60%"></span>
+                                    <span class="wave-bar" style="height:75%"></span>
+                                    <span class="wave-bar" style="height:95%"></span>
+                                    <span class="wave-bar" style="height:50%"></span>
+                                    <span class="wave-bar" style="height:30%"></span>
+                                    <span class="wave-bar" style="height:15%"></span>
+                                </div>
+
+                                <div class="progress-bar-wrapper">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="player-progress" min="0" max="100" value="0" id="deck-slider">
+                                    <span class="total-duration">48:22</span>
+                                </div>
+
+                                <div class="deck-controls">
+                                    <button class="deck-btn" id="deck-prev-btn"><i data-lucide="skip-back"></i></button>
+                                    <button class="deck-btn deck-play-toggle" id="deck-play-btn"><i data-lucide="play"></i></button>
+                                    <button class="deck-btn" id="deck-next-btn"><i data-lucide="skip-forward"></i></button>
+                                </div>
+
+                                <div class="deck-extra-controls">
+                                    <div class="volume-container">
+                                        <i data-lucide="volume-2" id="volume-icon"></i>
+                                        <input type="range" class="volume-slider" min="0" max="100" value="80" id="deck-volume">
+                                    </div>
+                                    <div class="speed-container">
+                                        <button class="speed-btn" id="deck-speed">1.0x</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Multi-platform Subscribe Badges -->
+                            <div class="subscribe-cluster">
+                                <a href="https://spotify.com" target="_blank" rel="noopener" class="sub-link spotify">
+                                    <i data-lucide="music"></i> Spotify
+                                </a>
+                                <a href="https://apple.com" target="_blank" rel="noopener" class="sub-link apple">
+                                    <i data-lucide="podcast"></i> Apple Podcasts
+                                </a>
+                                <a href="#" class="sub-link rss" onclick="showRssToast(event)">
+                                    <i data-lucide="rss"></i> RSS Feed
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Host Spotlight & Bios Section -->
+            <section class="section-padding" id="home1-hosts">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Meet the Voices Behind the Microphones</h2>
+                        <p class="section-subtitle">Our team consists of veteran journalists, award-winning sound designers, and technical visionaries.</p>
+                    </div>
+
+                    <div class="hosts-grid">
+                        <!-- Host 1 -->
+                        <div class="host-profile-card">
+                            <div class="host-avatar">
+                                <img src="male1.avif" alt="Sarah Jenkins">
+                            </div>
+                            <div class="host-details">
+                                <h3 class="host-name">Sarah Jenkins</h3>
+                                <span class="host-title">Host, The Daily Byte & True Crime Decoded</span>
+                                <p class="host-bio">Sarah is a former tech correspondent with 12 years of experience analyzing software architectures, computing systems, and historical telemetry data.</p>
+                                <div class="host-socials">
+                                    <a href="#" aria-label="Tech"><i data-lucide="cpu"></i></a>
+                                    <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                                    <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Host 2 -->
+                        <div class="host-profile-card">
+                            <div class="host-avatar">
+                                <img src="f1.avif" alt="Marcus Vance">
+                            </div>
+                            <div class="host-details">
+                                <h3 class="host-name">Marcus Vance</h3>
+                                <span class="host-title">Host, Behind the Sound & Lead Engineer</span>
+                                <p class="host-bio">Marcus is a veteran recording engineer. He designed three of the commercial spaces in our network and specializes in vintage mixing desks and analog preamps.</p>
+                                <div class="host-socials">
+                                    <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                                    <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                                    <a href="#" aria-label="Dribbble"><i data-lucide="globe"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Host 3 -->
+                        <div class="host-profile-card">
+                            <div class="host-avatar">
+                                <img src="male2.avif" alt="Elena Rostova">
+                            </div>
+                            <div class="host-details">
+                                <h3 class="host-name">Elena Rostova</h3>
+                                <span class="host-title">Host, Indie Wave & Creative Director</span>
+                                <p class="host-bio">Elena is a composer and sound designer whose synthesis pieces have been featured in independent film scores across Europe. She loves modular racks.</p>
+                                <div class="host-socials">
+                                    <a href="#" aria-label="SoundCloud"><i data-lucide="music"></i></a>
+                                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                                    <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Studio & Production Services Section -->
+            <section class="section-padding section-alt" id="home1-services-info">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Physical Studios & Audio Post-Production</h2>
+                        <p class="section-subtitle">We rent soundproofed rooms, record high-fidelity multi-mic sessions, and offer remote editing, mixing, and mastering services.</p>
+                    </div>
+
+                    <div class="services-brief-grid">
+                        <div class="service-brief-card">
+                            <div class="service-icon"><i data-lucide="mic"></i></div>
+                            <h3>Studio Recording</h3>
+                            <p>Equipped with industry-standard Shure SM7B, Neumann U87, and custom acoustic panels. Book rooms A or B today.</p>
+                            <a href="#" class="service-arrow-link" onclick="navigateToView('services')">Learn pricing <i data-lucide="arrow-right"></i></a>
+                        </div>
+                        <div class="service-brief-card">
+                            <div class="service-icon"><i data-lucide="sliders"></i></div>
+                            <h3>Editing & Sound Design</h3>
+                            <p>Let our professional engineers handle noise reduction, mouth de-click, and custom atmospheric spatial design.</p>
+                            <a href="#" class="service-arrow-link" onclick="navigateToView('services')">Learn pricing <i data-lucide="arrow-right"></i></a>
+                        </div>
+                        <div class="service-brief-card">
+                            <div class="service-icon"><i data-lucide="radio"></i></div>
+                            <h3>Distribution & Launch</h3>
+                            <p>Get listed instantly on Spotify, Apple, Google, and Amazon. Dynamic ad integration and premium subscription pipelines.</p>
+                            <a href="#" class="service-arrow-link" onclick="navigateToView('services')">Learn pricing <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Network Statistics & Premium Subscriber CTA -->
+            <section class="section-padding cta-section" id="home1-cta">
+                <div class="section-container">
+                    <div class="cta-banner">
+                        <div class="cta-text">
+                            <h2>Get the Premium Experience</h2>
+                            <p>Support our network of independent audio creators and receive ad-free RSS feeds, exclusive bonus episodes, behind-the-scenes video drops, and network merchandise discounts.</p>
+                            <div class="cta-stats-row">
+                                <div class="cta-stat">
+                                    <span class="stat-number">12M+</span>
+                                    <span class="stat-lbl">Downloads</span>
+                                </div>
+                                <div class="cta-stat">
+                                    <span class="stat-number">25+</span>
+                                    <span class="stat-lbl">Active Shows</span>
+                                </div>
+                                <div class="cta-stat">
+                                    <span class="stat-number">25k+</span>
+                                    <span class="stat-lbl">Members</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-form-panel">
+                            <h3>Subscribe to Newsletter</h3>
+                            <p class="cta-form-desc">Get weekly show summaries, audio tip writeups, and recording schedules.</p>
+                            <form id="newsletter-form" onsubmit="handleFormSubmit(event, 'Newsletter')">
+                                <div class="input-group">
+                                    <label for="newsletter-email" class="sr-only">Email Address</label>
+                                    <input type="email" id="newsletter-email" placeholder="Your Email Address" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Sign Up Free</button>
+                            </form>
+                            <div class="or-separator"><span>OR JOIN PREMIUM</span></div>
+                            <button class="btn btn-accent btn-block" onclick="navigateToView('user-dashboard')">
+                                <i data-lucide="star"></i> Access Premium Dashboard
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ==================== HOME 2: PREMIUM HUB VIEW ==================== -->
+        <main id="home2-view" class="view-panel" style="display: none;">
+            <!-- 1. Hero Section: Media-Rich Video Highlight -->
+            <section class="hero-section" id="home2-hero">
+                <div class="mesh-gradient-alt"></div>
+                <div class="section-container hero-grid">
+                    <div class="hero-text-content">
+                        <div class="premium-badge">
+                            <i data-lucide="star"></i>
+                            <span>EXCLUSIVE MEMBER PORTAL</span>
+                        </div>
+                        <h1 class="hero-title">Ad-Free RSS Feeds.<br><span class="gradient-text-alt">Exclusive Video Drops.</span></h1>
+                        <p class="hero-subtitle">Listen to your favorite podcasts without commercial interruptions. Uncover bonus material, watch high-definition studio session drops, and claim your member merch discounts.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn-accent" onclick="navigateToView('user-dashboard')">
+                                <i data-lucide="sparkles"></i> Unlock Member Dashboard
+                            </button>
+                            <button class="btn btn-secondary" onclick="navigateToSection('home2-benefits')">
+                                Learn Member Benefits
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Video Playback Container Mock -->
+                    <div class="hero-video-card">
+                        <div class="video-preview-box">
+                            <img src="p14.jpg" alt="Video teaser background">
+                            <div class="video-play-overlay" onclick="triggerTeaserVideo()">
+                                <div class="play-pulse-circle"></div>
+                                <i data-lucide="play-circle"></i>
+                            </div>
+                            <div class="video-info-overlay">
+                                <h4>BEHIND THE SCENE TEASER</h4>
+                                <p>Recording EP 100 in Studio A with Sarah Jenkins</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Recent Premium Episode Snippets Showcase -->
+            <section class="section-padding" id="home2-episodes">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Premium Release Snippets</h2>
+                        <p class="section-subtitle">A sneak peek at the bonus content available right now inside the subscriber portal.</p>
+                    </div>
+
+                    <div class="episodes-carousel-grid">
+                        <!-- Card 1 -->
+                        <div class="premium-episode-card">
+                            <div class="prem-ep-header">
+                                <span class="premium-only-badge"><i data-lucide="lock"></i> Member Only</span>
+                                <span class="show-tag">The Daily Byte</span>
+                            </div>
+                            <h3>EP 124b: Extended Q&A on Neural Audio Weights</h3>
+                            <p class="prem-ep-desc">Sarah answers questions from subscribers regarding training latency, cost budgets, and model accuracy.</p>
+                            <div class="prem-ep-footer">
+                                <button class="btn btn-small" onclick="playMockPreview('Neural weights bonus Q&A')"><i data-lucide="play"></i> 10m Preview</button>
+                                <span class="duration-tag"><i data-lucide="clock"></i> 32m Full</span>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="premium-episode-card">
+                            <div class="prem-ep-header">
+                                <span class="premium-only-badge"><i data-lucide="lock"></i> Member Only</span>
+                                <span class="show-tag">Behind the Sound</span>
+                            </div>
+                            <h3>Abbey Road Plate Reverbs - Multitrack Stems</h3>
+                            <p class="prem-ep-desc">Download and listen to the raw multitrack dry vs wet stems using various mic setups.</p>
+                            <div class="prem-ep-footer">
+                                <button class="btn btn-small" onclick="playMockPreview('Abbey Road Stems Demo')"><i data-lucide="play"></i> 5m Preview</button>
+                                <span class="duration-tag"><i data-lucide="clock"></i> 45m Full</span>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="premium-episode-card">
+                            <div class="prem-ep-header">
+                                <span class="premium-only-badge"><i data-lucide="lock"></i> Member Only</span>
+                                <span class="show-tag">Indie Wave</span>
+                            </div>
+                            <h3>Exclusive Live Set: Elena's Modular Ambient Session</h3>
+                            <p class="prem-ep-desc">An uninterrupted 45-minute modular synthesizer performance recorded live in the Podcasts Lounge.</p>
+                            <div class="prem-ep-footer">
+                                <button class="btn btn-small" onclick="playMockPreview('Modular Ambient Live snippet')"><i data-lucide="play"></i> 8m Preview</button>
+                                <span class="duration-tag"><i data-lucide="clock"></i> 45m Full</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Premium Benefits Detail Grid -->
+            <section class="section-padding section-alt" id="home2-benefits">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">The Perks of Unlocking Premium</h2>
+                        <p class="section-subtitle">What's included in our monthly $5 creator subscription?</p>
+                    </div>
+
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i data-lucide="rss"></i></div>
+                            <h3>Ad-Free RSS Feeds</h3>
+                            <p>Generate your custom podcast links. Put them into Apple Podcasts, Overcast, Pocket Casts, or Spotify and enjoy no ads.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i data-lucide="video"></i></div>
+                            <h3>Exclusive Video Drops</h3>
+                            <p>Access high-definition multi-camera recording videos, gear shootouts, and interview bloopers from the studio.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i data-lucide="sparkles"></i></div>
+                            <h3>Exclusive Bonus Episodes</h3>
+                            <p>Unlock extra episodes, deep dives, extended interviews, and dry stem downloads for all shows on the network.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i data-lucide="shopping-bag"></i></div>
+                            <h3>25% Merchandise Discount</h3>
+                            <p>Save 25% on our network hoodies, mugs, and microphone stands. Unlocks directly in the dashboard merchandise portal.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Live Recording & Streaming Schedule -->
+            <section class="section-padding" id="home2-schedule">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Studio Recording & Live stream Calendar</h2>
+                        <p class="section-subtitle">See when your favorite shows are recording live. Premium users can join the live feed chat rooms.</p>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <div class="calendar-header-day">
+                            <h3>Scheduled Recording Sessions</h3>
+                            <span>Resonate Studio A & B Live Schedule</span>
+                        </div>
+                        <div class="calendar-rows">
+                            <!-- Row 1 -->
+                            <div class="calendar-row">
+                                <div class="cal-date">
+                                    <span class="cal-day">16</span>
+                                    <span class="cal-month">JUN</span>
+                                </div>
+                                <div class="cal-show-details">
+                                    <h4>The Daily Byte - EP 125 Live Recording</h4>
+                                    <p>Sarah Jenkins chats with developer Aaron Cho about WebGPU standards. Live stream available in User Portal.</p>
+                                    <span class="cal-meta"><i data-lucide="clock"></i> 2:00 PM - 3:30 PM EST • Studio A</span>
+                                </div>
+                                <div class="cal-action">
+                                    <button class="btn btn-secondary btn-small" onclick="setCalReminder('The Daily Byte EP 125')"><i data-lucide="bell"></i> Set Reminder</button>
+                                </div>
+                            </div>
+                            <!-- Row 2 -->
+                            <div class="calendar-row">
+                                <div class="cal-date">
+                                    <span class="cal-day">18</span>
+                                    <span class="cal-month">JUN</span>
+                                </div>
+                                <div class="cal-show-details">
+                                    <h4>Behind the Sound - Microphone Shootout Panel</h4>
+                                    <p>Live microphones testing including Neumann U87, Shure SM7B, Electro-Voice RE20, and Lewitt LCT.</p>
+                                    <span class="cal-meta"><i data-lucide="clock"></i> 6:00 PM - 8:00 PM EST • Studio B</span>
+                                </div>
+                                <div class="cal-action">
+                                    <button class="btn btn-secondary btn-small" onclick="setCalReminder('Microphone Shootout Live')"><i data-lucide="bell"></i> Set Reminder</button>
+                                </div>
+                            </div>
+                            <!-- Row 3 -->
+                            <div class="calendar-row">
+                                <div class="cal-date">
+                                    <span class="cal-day">21</span>
+                                    <span class="cal-month">JUN</span>
+                                </div>
+                                <div class="cal-show-details">
+                                    <h4>Indie Wave - Modular Chill Live Jam</h4>
+                                    <p>Elena Rostova plays a live ambient electronic set with patch cables and drum sequencing. Chill session.</p>
+                                    <span class="cal-meta"><i data-lucide="clock"></i> 8:00 PM - 10:00 PM EST • Podcasts Lounge</span>
+                                </div>
+                                <div class="cal-action">
+                                    <button class="btn btn-secondary btn-small" onclick="setCalReminder('Indie Wave Ambient Session')"><i data-lucide="bell"></i> Set Reminder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Fan Reviews & Star Ratings Section -->
+            <section class="section-padding section-alt" id="home2-testimonials">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">What the Listener Community Says</h2>
+                        <p class="section-subtitle">Over 25,000 premium members supporting quality independent audio creation.</p>
+                    </div>
+
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+                            <p class="quote">"Getting the ad-free RSS feeds was so easy. I just pasted the token link into Apple Podcasts and I haven't heard an ad since. The audio quality is incredible."</p>
+                            <div class="user-bio">
+                                <strong>David K.</strong>
+                                <span>Premium subscriber since 2024</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+                            <p class="quote">"The microphone shootout video drop was worth a year's subscription alone. The multi-angle video setups inside the studio are super premium."</p>
+                            <div class="user-bio">
+                                <strong>Claire M.</strong>
+                                <span>Indie Creator & Member</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+                            <p class="quote">"Love the merchandise discount. I bought the designer audio mug and a premium hoodie for 25% off. Resonate represents the future of independent podcasting."</p>
+                            <div class="user-bio">
+                                <strong>Tariq S.</strong>
+                                <span>Community Listener</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Member Merch & Gear Preview -->
+            <section class="section-padding" id="home2-merch">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Network Merchandise & Gear</h2>
+                        <p class="section-subtitle">Wear your support. Premium members get 25% off all gear shown below when logged in.</p>
+                    </div>
+
+                    <div class="merch-grid">
+                        <!-- Merch 1 -->
+                        <div class="merch-card">
+                            <div class="merch-image">
+                                <img src="p12.jpg" alt="Resonate Premium Hoodie">
+                                <span class="merch-tag">Best Seller</span>
+                            </div>
+                            <div class="merch-body">
+                                <h3>Resonate Premium Studio Hoodie</h3>
+                                <p>Heavyweight cotton blend with dynamic audio wave print on sleeves. Fully lined hood.</p>
+                                <div class="price-row">
+                                    <span class="old-price">$45.00</span>
+                                    <span class="current-price">$33.75 <span class="premium-flag">with Premium</span></span>
+                                </div>
+                                <button class="btn btn-primary btn-small btn-block" onclick="addMerchToCart('Premium Studio Hoodie')">Add to Cart</button>
+                            </div>
+                        </div>
+                        <!-- Merch 2 -->
+                        <div class="merch-card">
+                            <div class="merch-image">
+                                <img src="p13.jpg" alt="Designer Audio Mug">
+                                <span class="merch-tag">Acoustic Series</span>
+                            </div>
+                            <div class="merch-body">
+                                <h3>Designer Studio Audio Mug</h3>
+                                <p>Ceramic mug with custom wave prints that react to temperature. Keeps coffee hot.</p>
+                                <div class="price-row">
+                                    <span class="old-price">$18.00</span>
+                                    <span class="current-price">$13.50 <span class="premium-flag">with Premium</span></span>
+                                </div>
+                                <button class="btn btn-primary btn-small btn-block" onclick="addMerchToCart('Designer Studio Audio Mug')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ==================== ABOUT US VIEW ==================== -->
+        <main id="about-view" class="view-panel" style="display: none;">
+            <!-- 1. Manifesto / Story Section -->
+            <section class="section-padding page-header-section" id="about-story">
+                <div class="section-container text-center max-width-medium">
+                    <span class="view-badge">OUR STORY</span>
+                    <h1 class="page-title">The Audio Revolution</h1>
+                    <p class="page-lead">We started in 2021 as a collection of bedroom podcasters frustrated by corporate network algorithms. Today, we run three state-of-the-art facilities hosting 25 independent shows reaching millions of monthly ears.</p>
+                </div>
+            </section>
+
+            <!-- 2. meet the team / board -->
+            <section class="section-padding section-alt" id="about-team">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Network Directors & Operations</h2>
+                        <p class="section-subtitle">The backend team coordinating microphone logistics, ad sales, and web distribution systems.</p>
+                    </div>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <img src="a1.webp" alt="Sarah Jenkins">
+                            <h4>Sarah Jenkins</h4>
+                            <span>Co-Founder & Tech Director</span>
+                            <p>Spearheads our technical infrastructure, streaming pipelines, and server distributions.</p>
+                        </div>
+                        <div class="team-card">
+                            <img src="a2.webp" alt="Marcus Vance">
+                            <h4>Marcus Vance</h4>
+                            <span>Co-Founder & Chief Acoustician</span>
+                            <p>Designs our physical recording spaces and oversees sound engineering standards.</p>
+                        </div>
+                        <div class="team-card">
+                            <img src="a3.avif" alt="Elena Rostova">
+                            <h4>Elena Rostova</h4>
+                            <span>Creative Director</span>
+                            <p>Manages show licensing, visual art assets, and custom network composer contracts.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Network timeline -->
+            <section class="section-padding" id="about-timeline">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Our Growth Milestone Timeline</h2>
+                        <p class="section-subtitle">How we transformed from an informal collective into a premium podcast studio network.</p>
+                    </div>
+
+                    <div class="timeline-container">
+                        <!-- Timeline Node 1 -->
+                        <div class="timeline-item">
+                            <div class="time-stamp">2022</div>
+                            <div class="time-content">
+                                <h3>First Combined Studio Session</h3>
+                                <p>Sarah and Marcus merge their separate bedroom podcasts under the "Resonate Network" label, recording on a simple four-channel mixer.</p>
+                            </div>
+                        </div>
+                        <!-- Timeline Node 2 -->
+                        <div class="timeline-item">
+                            <div class="time-stamp">2023</div>
+                            <div class="time-content">
+                                <h3>1 Million Downloads Milestone</h3>
+                                <p>Three new shows join the network. We cross the 1,000,000 global download mark and move into a small office space in downtown.</p>
+                            </div>
+                        </div>
+                        <!-- Timeline Node 3 -->
+                        <div class="timeline-item">
+                            <div class="time-stamp">2024</div>
+                            <div class="time-content">
+                                <h3>Acoustic Studio Buildout</h3>
+                                <p>Marcus designs Studio A with full decoupled walls, custom bass traps, and professional microphone layouts.</p>
+                            </div>
+                        </div>
+                        <!-- Timeline Node 4 -->
+                        <div class="timeline-item">
+                            <div class="time-stamp">2025</div>
+                            <div class="time-content">
+                                <h3>Premium Subscription Launch</h3>
+                                <p>We build our ad-free RSS distribution software, launching the premium membership club for direct listener monetization.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Studio Space Gallery (p9, p10, p11) -->
+            <section class="section-padding section-alt" id="about-gallery">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Step Inside the Physical Studios</h2>
+                        <p class="section-subtitle">A glimpse of where the recording magic happens. Soundproof rooms, mixing tables, and client lounges.</p>
+                    </div>
+
+                    <div class="gallery-grid">
+                        <div class="gallery-item" onclick="openGalleryModal('p9.jpg', 'Studio A Recording Room')">
+                            <img src="p9.jpg" alt="Recording room micro setup">
+                            <div class="gallery-hover-label"><span>Studio A Recording Desk</span></div>
+                        </div>
+                        <div class="gallery-item" onclick="openGalleryModal('p10.jpg', 'Mixing Desk & Mastering Board')">
+                            <img src="p10.jpg" alt="Mixing desk console knobs">
+                            <div class="gallery-hover-label"><span>Mixing & Mastering Console</span></div>
+                        </div>
+                        <div class="gallery-item" onclick="openGalleryModal('p11.jpg', 'Podcasts client lounge')">
+                            <img src="p11.jpg" alt="Studio client lounge sofa">
+                            <div class="gallery-hover-label"><span>The Creator Lounge</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Core Values -->
+            <section class="section-padding" id="about-values">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Our Operational Core Values</h2>
+                        <p class="section-subtitle">We believe independent audio is crucial for cultural diversity and technical research.</p>
+                    </div>
+
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-number">01</div>
+                            <h3>Creative Autonomy</h3>
+                            <p>Hosts retain 100% intellectual property rights. No executive censorship or corporate editorial limits.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-number">02</div>
+                            <h3>Audio Fidelity Excellence</h3>
+                            <p>We do not compromise on sound quality. Proper compression, levels, and microphone selections on every single track.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-number">03</div>
+                            <h3>Fair Creator Split</h3>
+                            <p>80% of direct premium subscription fees go directly to the creators of the shows you listen to.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Press Kit & Brand assets -->
+            <section class="section-padding section-alt" id="about-press">
+                <div class="section-container">
+                    <div class="press-kit-box">
+                        <div class="press-text">
+                            <h2>Press & Media Kit Assets</h2>
+                            <p>Are you writing about the independent audio revolution or the Resonate Network? Download our high-resolution logos, brand color specs, and co-founder press photos.</p>
+                        </div>
+                        <div class="press-actions">
+                            <a href="#" class="btn btn-primary" onclick="showPressToast(event)">
+                                <i data-lucide="download"></i> Download Media Bundle (24MB)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ==================== OUR SERVICES VIEW ==================== -->
+        <main id="services-view" class="view-panel" style="display: none;">
+            <!-- 1. Services Overview -->
+            <section class="section-padding page-header-section" id="services-hero">
+                <div class="section-container text-center max-width-medium">
+                    <span class="view-badge">WHAT WE DO</span>
+                    <h1 class="page-title">Creator Services & Studio Booking</h1>
+                    <p class="page-lead">From renting acoustic booths to publishing feeds to major podcast networks. We handle the technical side so you can focus on writing scripts.</p>
+                </div>
+            </section>
+
+            <!-- 2. Audio Recording details -->
+            <section class="section-padding section-alt" id="services-production">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Physical Studio Rentals</h2>
+                        <p class="section-subtitle">Book soundproof rooms with engineers in-studio or connect remotely via IP codecs.</p>
+                    </div>
+
+                    <div class="detailed-services-grid">
+                        <div class="detail-service-card">
+                            <h3>Studio A (Multi-Mic Setup)</h3>
+                            <span class="price-badge">$75 / hour</span>
+                            <p>Our premier space. Perfect for up to 4 local speakers. Includes a dedicated sound engineer, Rodecaster Pro II board, Shure SM7B mics, and headphone monitors.</p>
+                            <ul class="service-features-list">
+                                <li><i data-lucide="check"></i> Multi-track recording (RAW WAV format)</li>
+                                <li><i data-lucide="check"></i> In-room engineer assistance</li>
+                                <li><i data-lucide="check"></i> Decoupled floating walls</li>
+                            </ul>
+                        </div>
+                        <div class="detail-service-card">
+                            <h3>Studio B (Solo & Co-Host)</h3>
+                            <span class="price-badge">$45 / hour</span>
+                            <p>Optimized for solo creators, remote call interviews, or double co-hosts. High-quality acoustics, Neumann TLM103 mic, and Focusrite interface.</p>
+                            <ul class="service-features-list">
+                                <li><i data-lucide="check"></i> Ideal for remote guest interviews</li>
+                                <li><i data-lucide="check"></i> High-speed fiber internet connection</li>
+                                <li><i data-lucide="check"></i> Audio post-processing templates included</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Publishing & Distribution details -->
+            <section class="section-padding" id="services-distribution">
+                <div class="section-container">
+                    <div class="service-panel-full service-split-panel">
+                        <div class="panel-text-content">
+                            <div class="panel-icon"><i data-lucide="globe"></i></div>
+                            <h2>Global Distribution Pipeline</h2>
+                            <p>We push your audio files automatically to Spotify, Apple Podcasts, Amazon Music, and Overcast. Our custom server hosting features 99.9% uptime, fast bandwidth downloading, and instant transcription scripts.</p>
+                        </div>
+                        <div class="panel-image-content">
+                            <img src="p5.jpg" alt="Global Podcast Distribution Network" class="panel-side-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Monetization & Ads -->
+            <section class="section-padding section-alt" id="services-monetization">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Sponsorships & Member Monetization</h2>
+                        <p class="section-subtitle">How we help independent creators pay their rent.</p>
+                    </div>
+
+                    <div class="services-split-grid">
+                        <div class="split-image-container">
+                            <img src="p13.jpg" alt="Monetization analytics on devices" class="services-side-img">
+                        </div>
+                        <div class="monetize-blocks">
+                            <div class="monetize-block">
+                                <i data-lucide="dollar-sign"></i>
+                                <h3>Dynamic Ad Insertion</h3>
+                                <p>Our server automatically inserts relevant local advertisements at predefined timestamps. You decide the ad frequency and category limits.</p>
+                            </div>
+                            <div class="monetize-block">
+                                <i data-lucide="star"></i>
+                                <h3>Premium Subscription Pipelines</h3>
+                                <p>Turn on our subscriber portal. We charge members $5/month, handle tax compliance, and deliver ad-free custom feeds to them automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Video podcasting & Live setups -->
+            <section class="section-padding" id="services-video">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Video Podcasting & Multi-Cam Recording</h2>
+                        <p class="section-subtitle">Create engaging content for YouTube and social clips.</p>
+                    </div>
+
+                    <div class="video-service-panel">
+                        <div class="video-text">
+                            <h3>4K Multi-Camera Studio Setup</h3>
+                            <p>Book Studio A configured for video. Includes three Sony Alpha FX30 cinema cameras, professional key lighting, high-quality audio routing, and automatic multi-cam edit files ready for export.</p>
+                            <span>Add video capabilities to any Studio A booking for flat <strong>+$40/hour</strong>.</span>
+                        </div>
+                        <div class="video-illustration-img">
+                            <img src="p9.jpg" alt="Video Podcast Camera setup in Studio A" class="panel-illustration-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. FAQs Accordion -->
+            <section class="section-padding section-alt" id="services-faq">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Frequently Asked Questions</h2>
+                        <p class="section-subtitle">Got questions about licensing, studio slots, or pricing? We have answers.</p>
+                    </div>
+
+                    <div class="faq-accordion-group">
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>Do I retain the rights to my podcast?</span>
+                                <i data-lucide="plus" class="faq-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Absolutely. You retain 100% intellectual property rights to your show. Resonate is a distribution and facilities network, not a record label.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>What is the minimum booking time?</span>
+                                <i data-lucide="plus" class="faq-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Our minimum booking time for either Studio A or Studio B is one hour. After the first hour, we bill in 30-minute intervals.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>How do the ad-free premium feeds work?</span>
+                                <i data-lucide="plus" class="faq-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>When you subscribe to a show premium, we generate a unique RSS URL token specifically for you. You paste this into your player, and our system serves files stripped of advertisement metadata.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ==================== CONTACT US VIEW ==================== -->
+        <main id="contact-view" class="view-panel" style="display: none;">
+            <!-- 1. Contact Hero -->
+            <section class="section-padding page-header-section" id="contact-hero">
+                <div class="section-container text-center max-width-medium">
+                    <span class="view-badge">GET IN TOUCH</span>
+                    <h1 class="page-title">Let's Make Some Noise</h1>
+                    <p class="page-lead">Have a question about show distribution, premium member accounts, or booking a physical recording slot? Choose the relevant form below.</p>
+                </div>
+            </section>
+
+            <!-- Grid of Contact & Pitch Forms -->
+            <div class="section-container form-layouts-grid">
+                <!-- 2. General Contact Form -->
+                <section class="form-container-card" id="contact-general-form">
+                    <h2>General Inquiries</h2>
+                    <p>For listener support, billing issues, or general network comments.</p>
+                    <form id="general-contact" onsubmit="handleFormSubmit(event, 'General Inquiries')">
+                        <div class="form-group">
+                            <label for="gen-name">Full Name</label>
+                            <input type="text" id="gen-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gen-email">Email Address</label>
+                            <input type="email" id="gen-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gen-subject">Subject</label>
+                            <input type="text" id="gen-subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gen-msg">Message</label>
+                            <textarea id="gen-msg" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </section>
+
+                <!-- 3. Pitch a Show Form -->
+                <section class="form-container-card" id="contact-pitch-form">
+                    <h2>Pitch Your Show to Resonate</h2>
+                    <p>Are you an existing podcaster wanting to join our advertising and premium member network?</p>
+                    <form id="pitch-podcast" onsubmit="handleFormSubmit(event, 'Podcast Pitch')">
+                        <div class="form-group">
+                            <label for="pitch-show-name">Podcast Name</label>
+                            <input type="text" id="pitch-show-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pitch-rss">Current RSS Link (if any)</label>
+                            <input type="url" id="pitch-rss" placeholder="https://example.com/feed.xml">
+                        </div>
+                        <div class="form-group">
+                            <label for="pitch-stats">Avg. Monthly Downloads</label>
+                            <input type="number" id="pitch-stats" placeholder="e.g. 5000">
+                        </div>
+                        <div class="form-group">
+                            <label for="pitch-description">Elevator Pitch & Why Resonate?</label>
+                            <textarea id="pitch-description" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-accent">Submit Podcast Pitch</button>
+                    </form>
+                </section>
+
+                <!-- 4. Studio Room Booking Form -->
+                <section class="form-container-card full-width-grid" id="contact-booking-form">
+                    <h2>Book Studio Recording Slot</h2>
+                    <p>Reserve soundproof space and engineering equipment in downtown Resonate Studios.</p>
+                    <form id="studio-booking" onsubmit="handleFormSubmit(event, 'Studio Booking')">
+                        <div class="booking-form-grid">
+                            <div class="form-group">
+                                <label for="book-room">Choose Studio Space</label>
+                                <select id="book-room" required>
+                                    <option value="Studio A">Studio A - Multi-Mic ($75/hr)</option>
+                                    <option value="Studio B">Studio B - Solo/Co-Host ($45/hr)</option>
+                                    <option value="Studio A Video">Studio A with 4K Video (+$40/hr)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-date">Choose Date</label>
+                                <input type="date" id="book-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-time">Choose Time Slot</label>
+                                <select id="book-time" required>
+                                    <option value="Morning">Morning: 9:00 AM - 12:00 PM</option>
+                                    <option value="Afternoon">Afternoon: 1:00 PM - 4:00 PM</option>
+                                    <option value="Evening">Evening: 5:00 PM - 8:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-notes">Special Engineering Requests</label>
+                                <input type="text" id="book-notes" placeholder="e.g. Need Spatial Audio mixer presets">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Request Reservation Slot</button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- 5. Interactive SVG/Canvas styled map -->
+            <section class="section-padding" id="contact-map">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Physical Office Locations</h2>
+                        <p class="section-subtitle">We are based in the historic arts district, surrounded by vinyl shops and cafes.</p>
+                    </div>
+
+                    <div class="map-container">
+                        <div id="contact-leaflet-map"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Redesigned Urgent Broadcasting Support Console -->
+            <section class="section-padding section-alt" id="contact-help">
+                <div class="section-container">
+                    <div class="ops-support-card">
+                        <div class="ops-badge-pulse">
+                            <span class="pulse-ring"></span>
+                            <span class="pulse-dot"></span>
+                            <span class="ops-status-text">CRITICAL OPS ONLINE</span>
+                        </div>
+                        <h2>Urgent Broadcasting Support</h2>
+                        <p class="ops-lead-text">Are you currently streaming live and experiencing audio packet losses, dropouts, or metadata sync errors? Connect directly with our on-duty platform engineers.</p>
+                        
+                        <div class="ops-actions-grid">
+                            <div class="ops-action-item">
+                                <div class="ops-icon-wrap"><i data-lucide="phone-call"></i></div>
+                                <div class="ops-info">
+                                    <h3>Engineers Hotline</h3>
+                                    <span class="ops-contact-val">+1 (555) 902-8840</span>
+                                    <span class="ops-meta">Direct dispatch line for active streams</span>
+                                </div>
+                            </div>
+                            <div class="ops-action-item">
+                                <div class="ops-icon-wrap"><i data-lucide="mail"></i></div>
+                                <div class="ops-info">
+                                    <h3>Priority Ops Email</h3>
+                                    <span class="ops-contact-val">ops@resonate.audio</span>
+                                    <span class="ops-meta">Sub-minute alert dispatch ticket</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ops-console-footer">
+                            <button class="btn btn-accent btn-small" onclick="pingOpsServer()">
+                                <i data-lucide="activity"></i> Run Platform Diagnostic
+                            </button>
+                            <div id="ping-latency" class="latency-indicator" style="display: none;">
+                                <span class="latency-dot"></span>
+                                <span id="latency-text">Ping: -- ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Global Marketing Footer -->
+        <footer id="global-footer">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo" onclick="navigateToView('home1')" style="cursor: pointer;">
+                        <div class="logo-icon">
+                            <i data-lucide="mic"></i>
+                        </div>
+                        <span class="logo-text">RESONATE</span>
+                    </div>
+                    <p>Supporting independent podcasters, technical journalists, and audio arts composers since 2021.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateToView('home1')">Home 1</a></li>
+                        <li><a href="#" onclick="navigateToView('home2')">Home 2</a></li>
+                        <li><a href="#" onclick="navigateToView('about')">About Manifesto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateToView('services')">Booths Booking</a></li>
+                        <li><a href="#" onclick="navigateToView('services')">Post-Production</a></li>
+                        <li><a href="#" onclick="navigateToView('services')">Distribution Host</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" onclick="navigateToView('contact')">General Contact</a></li>
+                        <li><a href="#" onclick="navigateToView('contact')">Pitch a Show</a></li>
+                        <li><a href="#" onclick="navigateToView('contact')">Emergency Ops</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-container">
+                    <span>© 2026 Resonate Network & Audio Production Studios. All rights reserved.</span>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ==================== PREMIUM USER DASHBOARD ==================== -->
+    <div id="user-dashboard-view" class="dashboard-layout" style="display: none;">
+        <!-- Sidebar Navigation -->
+        <aside class="dash-sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-logo" onclick="navigateToView('home1')" style="cursor: pointer;">
+                    <div class="logo-icon">
+                        <i data-lucide="mic"></i>
+                    </div>
+                    <span class="logo-text">RESONATE</span>
+                </div>
+                <span class="portal-badge">PREMIUM PORTAL</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="sidebar-link active" onclick="switchDashboardTab('user-home', this)"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+                    <li><a href="#" class="sidebar-link" onclick="switchDashboardTab('user-feeds', this)"><i data-lucide="rss"></i> Premium Feeds</a></li>
+                    <li><a href="#" class="sidebar-link" onclick="switchDashboardTab('user-bonus', this)"><i data-lucide="sparkles"></i> Bonus Episodes</a></li>
+                    <li><a href="#" class="sidebar-link" onclick="switchDashboardTab('user-video', this)"><i data-lucide="video"></i> Video Drops</a></li>
+                    <li><a href="#" class="sidebar-link" onclick="switchDashboardTab('user-merch', this)"><i data-lucide="tag"></i> Member Discounts</a></li>
+                    <li class="sidebar-separator"></li>
+                    <li><a href="#" class="sidebar-link logout-link-btn"><i data-lucide="log-out"></i> Logout</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="creator-support-card">
+                    <p>Supporting <strong>Sarah, Marcus & Elena</strong></p>
+                    <div class="support-progress-bar"><span style="width: 80%"></span></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="dash-content-area">
+            <!-- Header Toggles & Title -->
+            <header class="dash-content-header">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button class="btn btn-secondary dash-sidebar-toggle-btn" onclick="toggleDashSidebar()" aria-label="Toggle Menu" style="display: none;">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <div class="dash-header-title">
+                        <span class="welcome-text">WELCOME BACK,</span>
+                        <h1 class="dash-heading" id="user-welcome-name">Premium Subscriber</h1>
+                    </div>
+                </div>
+                <div class="dash-header-controls">
+                    <!-- Theme Toggle -->
+                    <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+                        <i data-lucide="sun" class="sun-icon"></i>
+                        <i data-lucide="moon" class="moon-icon"></i>
+                    </button>
+                    <!-- LTR/RTL Toggle -->
+                    <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction">
+                        <span class="rtl-text">RTL</span>
+                        <span class="ltr-text">LTR</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Sections -->
+            <!-- TAB 1: User Home -->
+            <div class="dash-tab-panel" id="user-tab-home">
+                <!-- Stat Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="calendar"></i></div>
+                        <div class="stat-data">
+                            <h3>Active Days</h3>
+                            <span class="stat-val">142 Days</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="headphones"></i></div>
+                        <div class="stat-data">
+                            <h3>Bonus Listened</h3>
+                            <span class="stat-val">18 Episodes</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="sparkles"></i></div>
+                        <div class="stat-data">
+                            <h3>Unlocks Claimed</h3>
+                            <span class="stat-val">4 Rewards</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="activity"></i></div>
+                        <div class="stat-data">
+                            <h3>Ad-free Bandwidth</h3>
+                            <span class="stat-val">12.4 GB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="dash-charts-grid">
+                    <div class="dash-chart-card">
+                        <h3>Weekly Listening History</h3>
+                        <div class="chart-canvas-container">
+                            <canvas id="userListeningChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="dash-chart-card">
+                        <h3>Category Distribution</h3>
+                        <div class="chart-canvas-container">
+                            <canvas id="userCategoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unlocked Merch Discount Section -->
+                <div class="dash-section-panel">
+                    <div class="panel-header-row">
+                        <h3>Your Premium RSS feeds</h3>
+                        <button class="btn btn-secondary btn-small" onclick="switchDashboardTab('user-feeds')">Manage Feeds</button>
+                    </div>
+                    <div class="feeds-quick-list">
+                        <div class="quick-feed-row">
+                            <div class="feed-show-badge">The Daily Byte</div>
+                            <span>Personal Ad-Free Link: <code>https://resonate.audio/feed/adfree/db-99s2j</code></span>
+                            <button class="btn btn-secondary btn-small" onclick="copyText('https://resonate.audio/feed/adfree/db-99s2j')"><i data-lucide="copy"></i> Copy</button>
+                        </div>
+                        <div class="quick-feed-row">
+                            <div class="feed-show-badge">Behind the Sound</div>
+                            <span>Personal Ad-Free Link: <code>https://resonate.audio/feed/adfree/bs-291ka</code></span>
+                            <button class="btn btn-secondary btn-small" onclick="copyText('https://resonate.audio/feed/adfree/bs-291ka')"><i data-lucide="copy"></i> Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Feeds -->
+            <div class="dash-tab-panel" id="user-tab-feeds" style="display:none;">
+                <div class="dash-page-header">
+                    <h2>Ad-Free RSS Feed Generator</h2>
+                    <p>Paste these generated URLs directly into your podcast app of choice (Apple Podcasts, Pocket Casts, Overcast, or Google Podcasts) to sync the ad-free premium episodes.</p>
+                </div>
+                <div class="dash-section-panel">
+                    <div class="rss-generator-box">
+                        <div class="rss-generator-row">
+                            <div class="rss-show-info">
+                                <img src="p1.jpg" alt="Show cover">
+                                <div>
+                                    <h4>The Daily Byte Ad-Free</h4>
+                                    <span>Daily Tech Analysis</span>
+                                </div>
+                            </div>
+                            <div class="rss-copy-field">
+                                <input type="text" readonly value="https://resonate.audio/feed/adfree/db-99s2j" id="rss-link-db">
+                                <button class="btn btn-primary" onclick="copyTextFromInput('rss-link-db')"><i data-lucide="copy"></i> Copy Link</button>
+                            </div>
+                        </div>
+
+                        <div class="rss-generator-row">
+                            <div class="rss-show-info">
+                                <img src="p2.jpg" alt="Show cover">
+                                <div>
+                                    <h4>Behind the Sound Ad-Free</h4>
+                                    <span>Acoustic Panels & Engineering Deep Dives</span>
+                                </div>
+                            </div>
+                            <div class="rss-copy-field">
+                                <input type="text" readonly value="https://resonate.audio/feed/adfree/bs-291ka" id="rss-link-bs">
+                                <button class="btn btn-primary" onclick="copyTextFromInput('rss-link-bs')"><i data-lucide="copy"></i> Copy Link</button>
+                            </div>
+                        </div>
+
+                        <div class="rss-generator-row">
+                            <div class="rss-show-info">
+                                <img src="p3.jpg" alt="Show cover">
+                                <div>
+                                    <h4>Indie Wave Ad-Free</h4>
+                                    <span>Modular electronic composer panels</span>
+                                </div>
+                            </div>
+                            <div class="rss-copy-field">
+                                <input type="text" readonly value="https://resonate.audio/feed/adfree/iw-442pa" id="rss-link-iw">
+                                <button class="btn btn-primary" onclick="copyTextFromInput('rss-link-iw')"><i data-lucide="copy"></i> Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Bonus Episodes -->
+            <div class="dash-tab-panel" id="user-tab-bonus" style="display:none;">
+                <div class="dash-page-header">
+                    <h2>Bonus Episodes Library</h2>
+                    <p>Exclusive segments and extended multi-track audio session downloads.</p>
+                </div>
+                <div class="dash-section-panel">
+                    <div class="bonus-list">
+                        <div class="bonus-item-row">
+                            <div class="bonus-meta-info">
+                                <h4>EP 124b: Extended Neural Weights Deep-Dive</h4>
+                                <span>The Daily Byte • 32 mins • WAV/MP3 available</span>
+                            </div>
+                            <div class="bonus-actions">
+                                <button class="btn btn-secondary btn-small" onclick="playDashboardEpisode('EP 124b: Extended Neural Weights')"><i data-lucide="play"></i> Stream</button>
+                                <button class="btn btn-primary btn-small" onclick="showDownloadToast('EP 124b audio file')"><i data-lucide="download"></i> Download</button>
+                            </div>
+                        </div>
+                        <div class="bonus-item-row">
+                            <div class="bonus-meta-info">
+                                <h4>Abbey Road Plate Reverb Multi-track Stem Session</h4>
+                                <span>Behind the Sound • 140MB • ZIP Stems</span>
+                            </div>
+                            <div class="bonus-actions">
+                                <button class="btn btn-primary btn-small" onclick="showDownloadToast('Abbey Road Stems ZIP')"><i data-lucide="download"></i> Download ZIP Stems</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: Video Drops (p14, p15) -->
+            <div class="dash-tab-panel" id="user-tab-video" style="display:none;">
+                <div class="dash-page-header">
+                    <h2>Behind-The-Scenes Video Drops</h2>
+                    <p>High-definition videos recorded in the Resonate Recording Booths.</p>
+                </div>
+                <div class="dash-section-panel">
+                    <div class="video-drops-grid">
+                        <div class="video-drop-card">
+                            <div class="vid-preview">
+                                <img src="p14.jpg" alt="Making of EP 100">
+                                <div class="vid-duration">18:24</div>
+                                <button class="play-vid-btn" onclick="openVideoPlayer('p14.jpg', 'Making of Episode 100 in Studio A')"><i data-lucide="play-circle"></i></button>
+                            </div>
+                            <div class="vid-body">
+                                <h4>Behind the Scene: Making of Episode 100</h4>
+                                <p>Watch Sarah Jenkins record and edit the milestone episode. Check microphone angles.</p>
+                            </div>
+                        </div>
+
+                        <div class="video-drop-card">
+                            <div class="vid-preview">
+                                <img src="p15.jpg" alt="Microphone Shootout">
+                                <div class="vid-duration">25:10</div>
+                                <button class="play-vid-btn" onclick="openVideoPlayer('p15.jpg', 'Microphone Shootout - Shure SM7B vs Neumann U87')"><i data-lucide="play-circle"></i></button>
+                            </div>
+                            <div class="vid-body">
+                                <h4>Microphone Shootout: Studio A Panels</h4>
+                                <p>Marcus Vance and guests test various studio condenser and dynamic mics. Audio comparisons.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: Merchandise Discounts (p12, p13) -->
+            <div class="dash-tab-panel" id="user-tab-merch" style="display:none;">
+                <div class="dash-page-header">
+                    <h2>Member Merchandise Codes</h2>
+                    <p>Your 25% discount is pre-applied inside this portal. Click to copy codes to use on checkout.</p>
+                </div>
+                <div class="dash-section-panel">
+                    <div class="merch-discount-grid">
+                        <div class="discount-card">
+                            <img src="p12.jpg" alt="Premium Hoodie">
+                            <div class="discount-body">
+                                <h4>Premium Studio Wave Hoodie</h4>
+                                <span>Code: <code class="discount-code">RESONATEHOOD25</code></span>
+                                <div class="disc-price-row">
+                                    <span class="dash-old-price">$45.00</span>
+                                    <span class="dash-new-price">$33.75</span>
+                                </div>
+                                <button class="btn btn-primary btn-small" onclick="copyText('RESONATEHOOD25')">Copy Code</button>
+                            </div>
+                        </div>
+
+                        <div class="discount-card">
+                            <img src="p13.jpg" alt="Acoustic Mug">
+                            <div class="discount-body">
+                                <h4>Designer Temp-Reacting Audio Mug</h4>
+                                <span>Code: <code class="discount-code">RESONATEMUG25</code></span>
+                                <div class="disc-price-row">
+                                    <span class="dash-old-price">$18.00</span>
+                                    <span class="dash-new-price">$13.50</span>
+                                </div>
+                                <button class="btn btn-primary btn-small" onclick="copyText('RESONATEMUG25')">Copy Code</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ==================== ADMIN DASHBOARD ==================== -->
+    <div id="admin-dashboard-view" class="dashboard-layout" style="display: none;">
+        <!-- Sidebar Navigation -->
+        <aside class="dash-sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-logo" onclick="navigateToView('home1')" style="cursor: pointer;">
+                    <div class="logo-icon">
+                        <i data-lucide="mic"></i>
+                    </div>
+                    <span class="logo-text">RESONATE</span>
+                </div>
+                <span class="portal-badge admin-badge">ADMIN PORTAL</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="sidebar-link active" onclick="switchAdminTab('admin-home', this)"><i data-lucide="layout-dashboard"></i> Overview</a></li>
+                    <li><a href="#" class="sidebar-link" onclick="switchAdminTab('admin-shows', this)"><i data-lucide="radio"></i> Show Manager</a></li>
+                    <li><a href="#" class="sidebar-link" onclick="switchAdminTab('admin-subs', this)"><i data-lucide="users"></i> Subscribers</a></li>
+                    <li><a href="#" class="sidebar-link" onclick="switchAdminTab('admin-feedback', this)"><i data-lucide="message-square"></i> Feedback / Pitches</a></li>
+                    <li class="sidebar-separator"></li>
+                    <li><a href="#" class="sidebar-link logout-link-btn"><i data-lucide="log-out"></i> Logout</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="server-status">
+                    <div class="server-dot"></div>
+                    <span>Servers: 99.9% Online</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="dash-content-area">
+            <!-- Header Toggles & Title -->
+            <header class="dash-content-header">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button class="btn btn-secondary dash-sidebar-toggle-btn" onclick="toggleDashSidebar()" aria-label="Toggle Menu" style="display: none;">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <div class="dash-header-title">
+                        <span class="welcome-text">ADMINISTRATION PANEL,</span>
+                        <h1 class="dash-heading">Network Overview</h1>
+                    </div>
+                </div>
+                <div class="dash-header-controls">
+                    <!-- Theme Toggle -->
+                    <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+                        <i data-lucide="sun" class="sun-icon"></i>
+                        <i data-lucide="moon" class="moon-icon"></i>
+                    </button>
+                    <!-- LTR/RTL Toggle -->
+                    <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction">
+                        <span class="rtl-text">RTL</span>
+                        <span class="ltr-text">LTR</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- TAB 1: Admin Home -->
+            <div class="dash-tab-panel" id="admin-tab-home">
+                <!-- Stat Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="users"></i></div>
+                        <div class="stat-data">
+                            <h3>Total Subscribers</h3>
+                            <span class="stat-val">25,820</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="trending-up"></i></div>
+                        <div class="stat-data">
+                            <h3>Active Premium</h3>
+                            <span class="stat-val">8,429</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="dollar-sign"></i></div>
+                        <div class="stat-data">
+                            <h3>Monthly Net Rev</h3>
+                            <span class="stat-val">$42,145</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i data-lucide="download"></i></div>
+                        <div class="stat-data">
+                            <h3>Total Downloads</h3>
+                            <span class="stat-val">1.25M / mo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="dash-charts-grid">
+                    <div class="dash-chart-card">
+                        <h3>Subscriber Growth (2026)</h3>
+                        <div class="chart-canvas-container">
+                            <canvas id="adminSubscriberChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="dash-chart-card">
+                        <h3>Download Traffic by Platform</h3>
+                        <div class="chart-canvas-container">
+                            <canvas id="adminPlatformChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Show Manager -->
+            <div class="dash-tab-panel" id="admin-tab-shows" style="display:none;">
+                <div class="dash-page-header">
+                    <div class="panel-header-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                        <h2 style="margin:0;">Podcast Episodes Editor</h2>
+                        <button class="btn btn-primary btn-small" onclick="createNewEpisodePrompt()"><i data-lucide="plus"></i> Add New Episode</button>
+                    </div>
+                </div>
+                <div class="dash-section-panel">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cover</th>
+                                <th>Podcast Show</th>
+                                <th>Latest Episode Name</th>
+                                <th>Length</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-episodes-table-body">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 3: Subscribers -->
+            <div class="dash-tab-panel" id="admin-tab-subs" style="display:none;">
+                <div class="dash-page-header">
+                    <h2>Premium Subscribers Registry</h2>
+                    <p>Manage and view members currently on active billing tiers.</p>
+                </div>
+                <div class="dash-section-panel">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Member Name</th>
+                                <th>Email</th>
+                                <th>Joined</th>
+                                <th>Status</th>
+                                <th>Bandwidth Used</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>David K.</td>
+                                <td>david.k@example.com</td>
+                                <td>Jan 12, 2024</td>
+                                <td><span class="status-active">Active Premium</span></td>
+                                <td>4.2 GB</td>
+                            </tr>
+                            <tr>
+                                <td>Claire M.</td>
+                                <td>claire.m@example.com</td>
+                                <td>Mar 05, 2024</td>
+                                <td><span class="status-active">Active Premium</span></td>
+                                <td>8.1 GB</td>
+                            </tr>
+                            <tr>
+                                <td>Tariq S.</td>
+                                <td>tariq.s@example.com</td>
+                                <td>Feb 20, 2025</td>
+                                <td><span class="status-active">Active Premium</span></td>
+                                <td>0.9 GB</td>
+                            </tr>
+                            <tr>
+                                <td>Aria Vance</td>
+                                <td>aria.v@example.com</td>
+                                <td>Jun 01, 2026</td>
+                                <td><span class="status-pending">Pending Auth</span></td>
+                                <td>0.0 GB</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 4: Feedback and Pitches -->
+            <div class="dash-tab-panel" id="admin-tab-feedback" style="display:none;">
+                <div class="dash-page-header">
+                    <h2>Received Contact Messages & Podcast Pitches</h2>
+                    <p>Submissions from the public contact forms.</p>
+                </div>
+                <div class="dash-section-panel">
+                    <div class="feedback-messages-list" id="admin-feedback-list">
+                        <!-- Default placeholder or real list -->
+                        <div class="feedback-item-card">
+                            <div class="feedback-item-header">
+                                <span class="feedback-tag pitch">Podcast Pitch</span>
+                                <h4>The Code Stack Podcast</h4>
+                                <span>Submitted: 2 hours ago</span>
+                            </div>
+                            <p><strong>Host:</strong> Aaron Cho (aaron.cho@codestack.io) • <strong>Current RSS:</strong> https://codestack.io/feed.xml • <strong>Downloads:</strong> 4,200/mo</p>
+                            <p class="feedback-text">"Hi Resonate network. I make a weekly technical coding review podcast and I'd love to join the network to manage ads and add a premium subscriber track. I already record in a treated solo booth."</p>
+                            <div class="feedback-item-actions">
+                                <button class="btn btn-primary btn-small" onclick="approvePitch('The Code Stack')">Approve Invitation</button>
+                                <button class="btn btn-secondary btn-small" onclick="dismissFeedback(this)">Archive Message</button>
+                            </div>
+                        </div>
+
+                        <div class="feedback-item-card">
+                            <div class="feedback-item-header">
+                                <span class="feedback-tag booking">Studio Booking</span>
+                                <h4>Studio A Request - Jun 22</h4>
+                                <span>Submitted: 5 hours ago</span>
+                            </div>
+                            <p><strong>Client:</strong> Elena Rostova • <strong>Acoustics Note:</strong> Need 4K Video Setup for EP 43 Modular stream</p>
+                            <div class="feedback-item-actions">
+                                <button class="btn btn-primary btn-small" onclick="approveBooking('Studio A Booking Elena')">Confirm Booking Slot</button>
+                                <button class="btn btn-secondary btn-small" onclick="dismissFeedback(this)">Archive Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ==================== STICKY GLOBAL AUDIO PLAYER BAR ==================== -->
+    <div id="global-player-bar" style="display: none;">
+        <div class="bar-container">
+            <div class="bar-track-info">
+                <img src="p1.jpg" alt="Track cover" id="bar-img">
+                <div class="bar-meta">
+                    <span class="bar-show-name" id="bar-show">The Daily Byte</span>
+                    <h4 class="bar-title-text" id="bar-title">EP 124: The Future of Neural Audio Architectures</h4>
+                </div>
+            </div>
+
+            <div class="bar-center-controls">
+                <div class="bar-buttons">
+                    <button class="bar-btn" onclick="prevTrack()" aria-label="Previous Track"><i data-lucide="skip-back"></i></button>
+                    <button class="bar-btn bar-play-btn" id="bar-play-trigger" aria-label="Play/Pause Track"><i data-lucide="play"></i></button>
+                    <button class="bar-btn" onclick="nextTrack()" aria-label="Next Track"><i data-lucide="skip-forward"></i></button>
+                </div>
+                <div class="bar-progress-wrapper">
+                    <span class="bar-current-time">0:00</span>
+                    <input type="range" class="bar-progress-slider" min="0" max="100" value="0" id="bar-progress">
+                    <span class="bar-total-duration">48:22</span>
+                </div>
+            </div>
+
+            <div class="bar-right-controls">
+                <div class="bar-volume">
+                    <i data-lucide="volume-2" id="bar-volume-icon"></i>
+                    <input type="range" class="bar-volume-slider" min="0" max="100" value="80" id="bar-volume">
+                </div>
+                <button class="bar-btn-close" onclick="closeGlobalPlayerBar()" aria-label="Close Player Bar"><i data-lucide="x"></i></button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ==================== GALLERY LIGHTBOX MODAL ==================== -->
+    <div class="modal-backdrop" id="gallery-modal" style="display: none;">
+        <div class="modal-box gallery-modal-box">
+            <button class="modal-close-btn" onclick="closeGalleryModal()"><i data-lucide="x"></i></button>
+            <div class="lightbox-img-wrapper">
+                <img src="p9.jpg" alt="Active lightbox image" id="gallery-lightbox-img">
+            </div>
+            <div class="lightbox-caption" id="gallery-lightbox-caption">Recording Room A Desk Setup</div>
+        </div>
+    </div>
+
+    <!-- ==================== VIDEO DROPS LIGHTBOX PLAYER ==================== -->
+    <div class="modal-backdrop" id="video-modal" style="display: none;">
+        <div class="modal-box video-modal-box">
+            <button class="modal-close-btn" onclick="closeVideoPlayer()"><i data-lucide="x"></i></button>
+            <div class="mock-video-player-screen">
+                <img src="p14.jpg" alt="Video frame" id="video-player-img">
+                <div class="mock-video-playbar">
+                    <button class="mock-vid-btn"><i data-lucide="play"></i></button>
+                    <div class="mock-vid-timeline"><span style="width: 35%"></span></div>
+                    <div class="mock-vid-meta-duration">06:22 / 18:24</div>
+                    <button class="mock-vid-btn"><i data-lucide="volume-2"></i></button>
+                    <button class="mock-vid-btn"><i data-lucide="maximize"></i></button>
+                </div>
+                <div class="mock-video-overlay-text">
+                    <span class="active-pulse-dot"></span> Streaming HD Behind-The-Scenes Feed
+                </div>
+            </div>
+            <h3 id="video-lightbox-title" style="margin-top: 15px; font-family: 'Outfit', sans-serif;">Video Title</h3>
+        </div>
+    </div>
+
+    <!-- ==================== DASHBOARD SIDEBAR MOBILE BACKDROP ==================== -->
+    <div id="dash-sidebar-backdrop" class="dash-sidebar-backdrop" onclick="closeDashSidebar()" style="position: fixed; inset: 0; background-color: rgba(8, 6, 15, 0.6); z-index: 199; display: none; backdrop-filter: blur(4px);"></div>
+
+    <!-- ==================== TOAST NOTIFICATION CONTAINER ==================== -->
+    <div id="toast-container"></div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>

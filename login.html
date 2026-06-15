@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Resonate Network</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' x2='12' y1='19' y2='22'/%3E%3C/svg%3E">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme auth-page-body">
+
+    <!-- Top Right Controls -->
+    <div class="auth-header-controls">
+        <!-- Theme Toggle -->
+        <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme" id="theme-btn">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon"></i>
+        </button>
+        <!-- LTR/RTL Toggle -->
+        <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction" title="Toggle RTL/LTR" id="direction-btn">
+            <span class="rtl-text">RTL</span>
+            <span class="ltr-text">LTR</span>
+        </button>
+    </div>
+
+    <!-- Login Form Card -->
+    <div class="auth-card">
+        <!-- Brand Logo at Top -->
+        <div class="sidebar-logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+            <div class="logo-icon">
+                <i data-lucide="mic"></i>
+            </div>
+            <span class="logo-text">RESONATE</span>
+        </div>
+
+        <h2>Welcome Back</h2>
+        <p class="auth-subtitle">Login to access your premium ad-free feeds and downloads.</p>
+
+        <div class="social-auth-cluster">
+            <button class="btn-social" onclick="socialLogin('Google')">
+                <svg viewBox="0 0 24 24" width="18" height="18" style="margin-inline-end: 8px;">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                </svg>
+                Continue with Google
+            </button>
+            <button class="btn-social" onclick="socialLogin('Facebook')">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="#1877F2" style="margin-inline-end: 8px;">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Continue with Facebook
+            </button>
+        </div>
+
+        <div class="divider-text">or login with email</div>
+
+        <!-- Login Form -->
+        <form class="auth-form" id="login-form">
+            <div class="form-group">
+                <label for="login-email">Email Address</label>
+                <input type="email" id="login-email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" style="padding-block: 12px; margin-top: 10px; justify-content: center;">
+                <i data-lucide="log-in" style="width: 18px; height: 18px; margin-inline-end: 8px;"></i> Sign In
+            </button>
+        </form>
+
+        <p class="auth-footer-text">
+            Don't have an account? <a href="register.html">Just Sign Up</a>
+        </p>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Localized state manager matching global state
+        const config = {
+            theme: localStorage.getItem('resonate_theme') || 'dark',
+            direction: localStorage.getItem('resonate_direction') || 'ltr'
+        };
+
+        // Apply theme & direction immediately
+        function applyConfig() {
+            document.body.classList.remove('dark-theme', 'light-theme');
+            document.body.classList.add(`${config.theme}-theme`);
+            
+            document.documentElement.setAttribute('dir', config.direction);
+            if (config.direction === 'rtl') {
+                document.body.classList.add('rtl-active');
+            } else {
+                document.body.classList.remove('rtl-active');
+            }
+        }
+        applyConfig();
+
+        // Theme Toggle Listener
+        document.getElementById('theme-btn').addEventListener('click', () => {
+            config.theme = config.theme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('resonate_theme', config.theme);
+            applyConfig();
+        });
+
+        // Direction Toggle Listener
+        document.getElementById('direction-btn').addEventListener('click', () => {
+            config.direction = config.direction === 'ltr' ? 'rtl' : 'ltr';
+            localStorage.setItem('resonate_direction', config.direction);
+            applyConfig();
+        });
+
+        // Handle Form Submission with mock validation
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            
+            // Mock roles
+            let role = 'subscriber';
+            if (email.includes('admin')) {
+                role = 'admin';
+            }
+
+            // Persist logged in user state
+            localStorage.setItem('resonate_currentUser', role);
+            
+            // Redirect back to index.html
+            window.location.href = 'index.html';
+        });
+
+        // Mock Social Logins
+        function socialLogin(platform) {
+            localStorage.setItem('resonate_currentUser', 'subscriber');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
