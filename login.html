@@ -134,6 +134,15 @@
 
             // Persist logged in user state
             localStorage.setItem('resonate_currentUser', role);
+            localStorage.setItem('resonate_currentEmail', email);
+            
+            // Derive and save a dynamic username
+            const parts = email.split('@');
+            let name = role === 'admin' ? 'System Admin' : 'Premium Member';
+            if (parts.length > 0) {
+                name = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+            }
+            localStorage.setItem('resonate_currentUsername', name);
             
             // Redirect back to index.html
             window.location.href = 'index.html';
@@ -142,6 +151,7 @@
         // Mock Social Logins
         function socialLogin(platform) {
             localStorage.setItem('resonate_currentUser', 'subscriber');
+            localStorage.setItem('resonate_currentUsername', platform + ' User');
             window.location.href = 'index.html';
         }
     </script>

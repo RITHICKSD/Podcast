@@ -182,17 +182,17 @@
                     <div class="hero-featured-card">
                         <div class="glass-card featured-show">
                             <div class="show-cover-wrapper">
-                                <img src="p1.jpg" alt="Featured Show Cover">
-                                <div class="play-overlay" onclick="playEpisode('p1.jpg', 'The Daily Byte', 'EP 124: The Future of Neural Audio Architectures', '124')">
+                                <img src="p3.jpg" alt="Featured Show Cover">
+                                <div class="play-overlay" onclick="playEpisode('p3.jpg', 'Indie Wave', 'EP 42: Synthesizing the 80s Revival Scene', '42')">
                                     <i data-lucide="play"></i>
                                 </div>
                             </div>
                             <div class="show-info">
                                 <span class="show-tag">Featured Show</span>
-                                <h3 class="show-title">The Daily Byte</h3>
-                                <p class="show-desc">Hosted by Sarah Jenkins. Today's episode explores the integration of neural synthesis and procedural dialogue tools in immersive games.</p>
+                                <h3 class="show-title">Indie Wave</h3>
+                                <p class="show-desc">Hosted by Elena Rostova. Today's episode explores the Roland Juno-106 and how modern bedroom producers model its chorus filter.</p>
                                 <div class="show-meta">
-                                    <span><i data-lucide="clock"></i> 48 Mins</span>
+                                    <span><i data-lucide="clock"></i> 62 Mins</span>
                                     <span><i data-lucide="calendar"></i> Today</span>
                                 </div>
                             </div>
@@ -352,6 +352,27 @@
                                     <p class="transcript-line"><span class="timestamp" onclick="seekTo(10)">[00:10]</span> <strong>Elena Rostova:</strong> We look at the Roland Juno-106 and how modern bedroom producers model its chorus filter.</p>
                                 </div>
                             </div>
+
+                            <!-- Episode Item 4 (Issue 5) -->
+                            <div class="episode-row" onclick="loadTrack('p4.jpg', 'True Crime Decoded', 'EP 56: The Cryptic Transmission of 1978', '56')">
+                                <div class="ep-num">56</div>
+                                <div class="ep-details">
+                                    <span class="ep-show">True Crime Decoded</span>
+                                    <h4 class="ep-title">The Cryptic Transmission of 1978</h4>
+                                    <span class="ep-meta">Released: 1 week ago • Duration: 38:45</span>
+                                </div>
+                                <div class="ep-actions-group">
+                                    <button class="ep-play-btn" aria-label="Play Track"><i data-lucide="play"></i></button>
+                                    <button class="ep-transcript-toggle" onclick="toggleTranscript('ep56-trans', event)"><i data-lucide="file-text"></i> Transcript</button>
+                                </div>
+                            </div>
+                            <!-- Transcript Accordion 4 -->
+                            <div class="transcript-collapse" id="ep56-trans">
+                                <div class="transcript-content">
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(0)">[00:00]</span> <strong>Sarah Jenkins:</strong> This is True Crime Decoded. In 1978, a shortwave signal interrupted normal broadcasts.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(25)">[00:25]</span> <strong>Sarah Jenkins:</strong> The telemetry data we recovered suggests it wasn't a standard atmospheric bounce...</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Right Panel: Big Interactive Audio Deck -->
@@ -445,7 +466,6 @@
                                 <span class="host-title">Host, The Daily Byte & True Crime Decoded</span>
                                 <p class="host-bio">Sarah is a former tech correspondent with 12 years of experience analyzing software architectures, computing systems, and historical telemetry data.</p>
                                 <div class="host-socials">
-                                    <a href="#" aria-label="Tech"><i data-lucide="cpu"></i></a>
                                     <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
                                     <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
                                     <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
@@ -465,7 +485,7 @@
                                 <div class="host-socials">
                                     <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
                                     <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-                                    <a href="#" aria-label="Dribbble"><i data-lucide="globe"></i></a>
+                                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -480,7 +500,7 @@
                                 <span class="host-title">Host, Indie Wave & Creative Director</span>
                                 <p class="host-bio">Elena is a composer and sound designer whose synthesis pieces have been featured in independent film scores across Europe. She loves modular racks.</p>
                                 <div class="host-socials">
-                                    <a href="#" aria-label="SoundCloud"><i data-lucide="music"></i></a>
+                                    <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
                                     <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
                                     <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
                                 </div>
@@ -800,7 +820,7 @@
                         <!-- Merch 1 -->
                         <div class="merch-card">
                             <div class="merch-image">
-                                <img src="p12.jpg" alt="Resonate Premium Hoodie">
+                                <img src="p12.png" alt="Resonate Premium Hoodie">
                                 <span class="merch-tag">Best Seller</span>
                             </div>
                             <div class="merch-body">
@@ -926,20 +946,22 @@
                     <div class="section-header">
                         <h2 class="section-title">Step Inside the Physical Studios</h2>
                         <p class="section-subtitle">A glimpse of where the recording magic happens. Soundproof rooms, mixing tables, and client lounges.</p>
-                    </div>
-
-                    <div class="gallery-grid">
-                        <div class="gallery-item" onclick="openGalleryModal('p9.jpg', 'Studio A Recording Room')">
-                            <img src="p9.jpg" alt="Recording room micro setup">
-                            <div class="gallery-hover-label"><span>Studio A Recording Desk</span></div>
-                        </div>
-                        <div class="gallery-item" onclick="openGalleryModal('p10.jpg', 'Mixing Desk & Mastering Board')">
-                            <img src="p10.jpg" alt="Mixing desk console knobs">
-                            <div class="gallery-hover-label"><span>Mixing & Mastering Console</span></div>
-                        </div>
-                        <div class="gallery-item" onclick="openGalleryModal('p11.jpg', 'Podcasts client lounge')">
-                            <img src="p11.jpg" alt="Studio client lounge sofa">
-                            <div class="gallery-hover-label"><span>The Creator Lounge</span></div>
+                        <div class="studio-feature-grid">
+                            <div class="studio-feature-item">
+                                <i data-lucide="mic" class="studio-feature-icon"></i>
+                                <h4 class="studio-feature-title">Recording Room</h4>
+                                <p class="studio-feature-desc">Professional mic setup and acoustically treated space.</p>
+                            </div>
+                            <div class="studio-feature-item">
+                                <i data-lucide="sliders" class="studio-feature-icon"></i>
+                                <h4 class="studio-feature-title">Mixing &amp; Mastering</h4>
+                                <p class="studio-feature-desc">High‑end console with outboard gear.</p>
+                            </div>
+                            <div class="studio-feature-item">
+                                <i data-lucide="coffee" class="studio-feature-icon"></i>
+                                <h4 class="studio-feature-title">Creator Lounge</h4>
+                                <p class="studio-feature-desc">Comfortable client lounge for collaboration.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1009,30 +1031,34 @@
                         <h2 class="section-title">Physical Studio Rentals</h2>
                         <p class="section-subtitle">Book soundproof rooms with engineers in-studio or connect remotely via IP codecs.</p>
                     </div>
-
                     <div class="detailed-services-grid">
                         <div class="detail-service-card">
-                            <h3>Studio A (Multi-Mic Setup)</h3>
-                            <span class="price-badge">$75 / hour</span>
-                            <p>Our premier space. Perfect for up to 4 local speakers. Includes a dedicated sound engineer, Rodecaster Pro II board, Shure SM7B mics, and headphone monitors.</p>
-                            <ul class="service-features-list">
-                                <li><i data-lucide="check"></i> Multi-track recording (RAW WAV format)</li>
-                                <li><i data-lucide="check"></i> In-room engineer assistance</li>
-                                <li><i data-lucide="check"></i> Decoupled floating walls</li>
-                            </ul>
+                            <img src="st1.jpg" alt="Studio A - Multi-mic aerial view" class="studio-card-img">
+                            <div class="studio-card-body">
+                                <h3>Studio A (Multi-Mic Setup)</h3>
+                                <span class="price-badge">$75 / hour</span>
+                                <p>Our premier space. Perfect for up to 4 local speakers. Includes a dedicated sound engineer, Rodecaster Pro II board, Shure SM7B mics, and headphone monitors.</p>
+                                <ul class="service-features-list">
+                                    <li><i data-lucide="check"></i> Multi-track recording (RAW WAV format)</li>
+                                    <li><i data-lucide="check"></i> In-room engineer assistance</li>
+                                    <li><i data-lucide="check"></i> Decoupled floating walls</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="detail-service-card">
-                            <h3>Studio B (Solo & Co-Host)</h3>
-                            <span class="price-badge">$45 / hour</span>
-                            <p>Optimized for solo creators, remote call interviews, or double co-hosts. High-quality acoustics, Neumann TLM103 mic, and Focusrite interface.</p>
-                            <ul class="service-features-list">
-                                <li><i data-lucide="check"></i> Ideal for remote guest interviews</li>
-                                <li><i data-lucide="check"></i> High-speed fiber internet connection</li>
-                                <li><i data-lucide="check"></i> Audio post-processing templates included</li>
-                            </ul>
+                            <img src="st2.jpg" alt="Studio B - Solo host recording" class="studio-card-img">
+                            <div class="studio-card-body">
+                                <h3>Studio B (Solo &amp; Co-Host)</h3>
+                                <span class="price-badge">$45 / hour</span>
+                                <p>Optimized for solo creators, remote call interviews, or double co-hosts. High-quality acoustics, Neumann TLM103 mic, and Focusrite interface.</p>
+                                <ul class="service-features-list">
+                                    <li><i data-lucide="check"></i> Ideal for remote guest interviews</li>
+                                    <li><i data-lucide="check"></i> High-speed fiber internet connection</li>
+                                    <li><i data-lucide="check"></i> Audio post-processing templates included</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </div>        </div>
             </section>
 
             <!-- 3. Publishing & Distribution details -->
@@ -1045,7 +1071,7 @@
                             <p>We push your audio files automatically to Spotify, Apple Podcasts, Amazon Music, and Overcast. Our custom server hosting features 99.9% uptime, fast bandwidth downloading, and instant transcription scripts.</p>
                         </div>
                         <div class="panel-image-content">
-                            <img src="p5.jpg" alt="Global Podcast Distribution Network" class="panel-side-img">
+                            <img src="gl.jpg" alt="Global Podcast Distribution Network" class="panel-side-img">
                         </div>
                     </div>
                 </div>
@@ -1061,7 +1087,7 @@
 
                     <div class="services-split-grid">
                         <div class="split-image-container">
-                            <img src="p13.jpg" alt="Monetization analytics on devices" class="services-side-img">
+                            <img src="sp.jpg" alt="Podcasting hosts live on air" class="services-side-img">
                         </div>
                         <div class="monetize-blocks">
                             <div class="monetize-block">
@@ -1094,7 +1120,7 @@
                             <span>Add video capabilities to any Studio A booking for flat <strong>+$40/hour</strong>.</span>
                         </div>
                         <div class="video-illustration-img">
-                            <img src="p9.jpg" alt="Video Podcast Camera setup in Studio A" class="panel-illustration-img">
+                            <img src="4k.jpg" alt="Video Podcast Camera setup in Studio A" class="panel-illustration-img">
                         </div>
                     </div>
                 </div>
@@ -1405,6 +1431,14 @@
                         <span class="rtl-text">RTL</span>
                         <span class="ltr-text">LTR</span>
                     </button>
+                    <!-- User Profile Widget (Issue 3 & 13) -->
+                    <div class="dash-user-profile" id="dash-user-profile-widget">
+                        <div class="dash-profile-info">
+                            <span class="dash-profile-welcome">Hello,</span>
+                            <span class="dash-profile-name" id="dash-user-username">Premium Member</span>
+                        </div>
+                        <img src="p6.jpg" alt="User avatar" class="dash-profile-avatar" id="dash-user-avatar">
+                    </div>
                 </div>
             </header>
 
@@ -1608,7 +1642,7 @@
                 <div class="dash-section-panel">
                     <div class="merch-discount-grid">
                         <div class="discount-card">
-                            <img src="p12.jpg" alt="Premium Hoodie">
+                            <img src="p12.png" alt="Premium Hoodie">
                             <div class="discount-body">
                                 <h4>Premium Studio Wave Hoodie</h4>
                                 <span>Code: <code class="discount-code">RESONATEHOOD25</code></span>
@@ -1650,7 +1684,11 @@
                     </div>
                     <span class="logo-text">RESONATE</span>
                 </div>
-                <span class="portal-badge admin-badge">ADMIN PORTAL</span>
+                    <span class="portal-badge admin-badge">ADMIN PORTAL</span>
+                    <div class="admin-profile">
+                        <img src="admin-avatar.jpg" alt="Admin" class="profile-pic" />
+                        <span class="profile-name">Admin</span>
+                    </div>
             </div>
             <nav class="sidebar-nav">
                 <ul>
@@ -1694,6 +1732,14 @@
                         <span class="rtl-text">RTL</span>
                         <span class="ltr-text">LTR</span>
                     </button>
+                    <!-- Admin Profile Widget (Issue 3 & 13) -->
+                    <div class="dash-user-profile" id="dash-admin-profile-widget">
+                        <div class="dash-profile-info">
+                            <span class="dash-profile-welcome">Hello,</span>
+                            <span class="dash-profile-name" id="dash-admin-username">System Admin</span>
+                        </div>
+                        <img src="p7.jpg" alt="Admin avatar" class="dash-profile-avatar" id="dash-admin-avatar">
+                    </div>
                 </div>
             </header>
 

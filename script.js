@@ -66,16 +66,39 @@ document.addEventListener('DOMContentLoaded', () => {
         const drawerWidget = document.getElementById('drawer-user-widget');
         if (drawerWidget) drawerWidget.style.display = 'flex';
         
+        let displayName = 'Premium Member';
+        if (savedUser === 'admin') {
+            displayName = 'System Admin';
+        }
+        const savedName = localStorage.getItem('resonate_currentUsername');
+        if (savedName) {
+            displayName = savedName;
+        }
+
         if (savedUser === 'subscriber') {
-            document.getElementById('header-username').textContent = 'Premium Member';
+            document.getElementById('header-username').textContent = displayName;
             document.getElementById('header-avatar-img').src = 'p6.jpg';
-            if (document.getElementById('drawer-username')) document.getElementById('drawer-username').textContent = 'Premium Member';
+            if (document.getElementById('drawer-username')) document.getElementById('drawer-username').textContent = displayName;
             if (document.getElementById('drawer-avatar-img')) document.getElementById('drawer-avatar-img').src = 'p6.jpg';
+            // Sync dashboard user profile widget
+            const dbUserText = document.getElementById('dash-user-username');
+            const dbUserImg = document.getElementById('dash-user-avatar');
+            if (dbUserText) dbUserText.textContent = displayName;
+            if (dbUserImg) dbUserImg.src = 'p6.jpg';
+            
+            // Personalize Dashboard Welcome Header
+            const welcomeText = document.getElementById('user-welcome-name');
+            if (welcomeText) welcomeText.textContent = displayName;
         } else if (savedUser === 'admin') {
-            document.getElementById('header-username').textContent = 'System Admin';
+            document.getElementById('header-username').textContent = displayName;
             document.getElementById('header-avatar-img').src = 'p7.jpg';
-            if (document.getElementById('drawer-username')) document.getElementById('drawer-username').textContent = 'System Admin';
+            if (document.getElementById('drawer-username')) document.getElementById('drawer-username').textContent = displayName;
             if (document.getElementById('drawer-avatar-img')) document.getElementById('drawer-avatar-img').src = 'p7.jpg';
+            // Sync dashboard admin profile widget
+            const dbAdminText = document.getElementById('dash-admin-username');
+            const dbAdminImg = document.getElementById('dash-admin-avatar');
+            if (dbAdminText) dbAdminText.textContent = displayName;
+            if (dbAdminImg) dbAdminImg.src = 'p7.jpg';
         }
     }
 
@@ -535,7 +558,19 @@ function navigateToView(viewName) {
     }
 
     state.activeView = viewName;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Suppress header backdrop-filter blur flash during transition
+    const header = document.getElementById('global-header');
+    if (header) {
+        header.style.backdropFilter = 'none';
+        header.style.webkitBackdropFilter = 'none';
+        setTimeout(() => {
+            header.style.backdropFilter = '';
+            header.style.webkitBackdropFilter = '';
+        }, 120);
+    }
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
 
     // Sync menu highlighting for desktop, mobile, and dropdown elements
     document.querySelectorAll('.nav-link, .dropdown-item, .mobile-nav-link, .mobile-dropdown-item').forEach(link => {
@@ -710,9 +745,24 @@ function switchAuthTab(tabName) {
     }
 }
 
-function mockLogin(role) {
+function mockLogin(role, email = '', username = '') {
     state.currentUser = role;
     localStorage.setItem('resonate_currentUser', role); // Save session!
+    
+    if (email) localStorage.setItem('resonate_currentEmail', email);
+    if (username) {
+        localStorage.setItem('resonate_currentUsername', username);
+    } else if (email) {
+        const parts = email.split('@');
+        let name = role === 'admin' ? 'System Admin' : 'Premium Member';
+        if (parts.length > 0) {
+            name = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+        }
+        localStorage.setItem('resonate_currentUsername', name);
+    }
+    
+    let displayName = localStorage.getItem('resonate_currentUsername') || (role === 'admin' ? 'System Admin' : 'Premium Member');
+
     closeLoginModal();
 
     // Toggle Header buttons
@@ -726,17 +776,32 @@ function mockLogin(role) {
     if (drawerWidget) drawerWidget.style.display = 'flex';
 
     if (role === 'subscriber') {
-        document.getElementById('header-username').textContent = 'Premium Member';
+        document.getElementById('header-username').textContent = displayName;
         document.getElementById('header-avatar-img').src = 'p6.jpg';
-        if (document.getElementById('drawer-username')) document.getElementById('drawer-username').textContent = 'Premium Member';
+        if (document.getElementById('drawer-username')) document.getElementById('drawer-username').textContent = displayName;
         if (document.getElementById('drawer-avatar-img')) document.getElementById('drawer-avatar-img').src = 'p6.jpg';
+        // Sync dashboard user profile widget
+        const dbUserText = document.getElementById('dash-user-username');
+        const dbUserImg = document.getElementById('dash-user-avatar');
+        if (dbUserText) dbUserText.textContent = displayName;
+        if (dbUserImg) dbUserImg.src = 'p6.jpg';
+        
+        // Personalize Dashboard Welcome Header
+        const welcomeText = document.getElementById('user-welcome-name');
+        if (welcomeText) welcomeText.textContent = displayName;
+
         showToast("Logged in as Premium Subscriber", "accent");
         navigateToView('user-dashboard');
     } else if (role === 'admin') {
-        document.getElementById('header-username').textContent = 'System Admin';
+        document.getElementById('header-username').textContent = displayName;
         document.getElementById('header-avatar-img').src = 'p7.jpg';
-        if (document.getElementById('drawer-username')) document.getElementById('drawer-username').textContent = 'System Admin';
+        if (document.getElementById('drawer-username')) document.getElementById('drawer-username').textContent = displayName;
         if (document.getElementById('drawer-avatar-img')) document.getElementById('drawer-avatar-img').src = 'p7.jpg';
+        // Sync dashboard admin profile widget
+        const dbAdminText = document.getElementById('dash-admin-username');
+        const dbAdminImg = document.getElementById('dash-admin-avatar');
+        if (dbAdminText) dbAdminText.textContent = displayName;
+        if (dbAdminImg) dbAdminImg.src = 'p7.jpg';
         showToast("Logged in as Administrator");
         navigateToView('admin-dashboard');
     }
@@ -745,6 +810,17 @@ function mockLogin(role) {
 function logout() {
     state.currentUser = null;
     localStorage.removeItem('resonate_currentUser'); // Clear local storage!
+    localStorage.removeItem('resonate_currentUsername');
+    localStorage.removeItem('resonate_currentEmail');
+    
+    // Reset display names
+    document.getElementById('header-username').textContent = 'Premium Member';
+    if (document.getElementById('drawer-username')) document.getElementById('drawer-username').textContent = 'Premium Member';
+    const dbUserText = document.getElementById('dash-user-username');
+    if (dbUserText) dbUserText.textContent = 'Premium Member';
+    const welcomeText = document.getElementById('user-welcome-name');
+    if (welcomeText) welcomeText.textContent = 'Premium Subscriber';
+
     document.getElementById('header-login-btn').style.display = 'flex';
     if (document.getElementById('drawer-login-btn')) document.getElementById('drawer-login-btn').style.display = 'flex';
     document.getElementById('header-user-widget').style.display = 'none';
@@ -1128,10 +1204,15 @@ function setupFormHandlers() {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
             // Mock profile routing
+            const parts = email.split('@');
+            let name = email.includes('admin') ? 'System Admin' : 'Premium Member';
+            if (parts.length > 0) {
+                name = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+            }
             if (email.includes('admin')) {
-                mockLogin('admin');
+                mockLogin('admin', email, name);
             } else {
-                mockLogin('subscriber');
+                mockLogin('subscriber', email, name);
             }
         });
     }
@@ -1140,7 +1221,11 @@ function setupFormHandlers() {
     if (regForm) {
         regForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            mockLogin('subscriber');
+            const nameInput = document.getElementById('reg-name');
+            const emailInput = document.getElementById('reg-email');
+            const name = nameInput ? nameInput.value : 'Premium Member';
+            const email = emailInput ? emailInput.value : '';
+            mockLogin('subscriber', email, name);
         });
     }
 }

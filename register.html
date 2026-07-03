@@ -132,6 +132,8 @@
         // Handle Form Submission with mock validation
         document.getElementById('register-form').addEventListener('submit', (e) => {
             e.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
             const password = document.getElementById('reg-password').value;
             const confirm = document.getElementById('reg-confirm').value;
 
@@ -142,6 +144,8 @@
 
             // Persist logged in user state
             localStorage.setItem('resonate_currentUser', 'subscriber');
+            localStorage.setItem('resonate_currentUsername', name);
+            localStorage.setItem('resonate_currentEmail', email);
             
             // Redirect back to index.html
             window.location.href = 'index.html';
@@ -150,8 +154,8 @@
         // Mock Social Logins
         function socialRegister(platform) {
             localStorage.setItem('resonate_currentUser', 'subscriber');
+            localStorage.setItem('resonate_currentUsername', platform + ' User');
             window.location.href = 'index.html';
-        }
-    </script>
+        }</script>
 </body>
 </html>
