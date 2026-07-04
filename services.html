@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonate Network | Premium Indie Podcast Studio</title>
+    <meta name="description" content="Access ad-free premium RSS feeds, exclusive episodes, behind-the-scenes video drops, and network merchandise discounts. Custom studio production space.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' x2='12' y1='19' y2='22'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body class="dark-theme">
+
+    <header id="global-header">
+        <div class="header-container">
+            <!-- Logo Section -->
+            <a href="home.html" class="header-logo" id="header-logo-btn">
+                <div class="logo-icon">
+                    <i data-lucide="mic"></i>
+                </div>
+                <span class="logo-text">RESONATE</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <!-- Home Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="home-nav-link">Home <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="home.html" class="dropdown-item" id="go-home1">Home 1</a></li>
+                            <li><a href="home2.html" class="dropdown-item" id="go-home2">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <!-- Standard Links -->
+                    <li class="nav-item"><a href="about.html" class="nav-link" id="go-about">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link" id="go-services">Services</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link" id="go-blog">Blog</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link" id="go-contact">Contact</a></li>
+                    <!-- Dashboard Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="dashboard-nav-link">Dashboard <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="user-dashboard.html" class="dropdown-item" id="go-user-dash">User Dashboard</a></li>
+                            <li><a href="admin-dashboard.html" class="dropdown-item" id="go-admin-dash">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right Controls -->
+            <div class="header-controls">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction" title="Toggle RTL/LTR">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+                <!-- Auth Button -->
+                <a href="login.html" class="login-btn" id="header-login-btn">
+                    <i data-lucide="log-in"></i>
+                    <span>Login</span>
+                </a>
+                <!-- User Avatar (Hidden until logged in) -->
+                <div class="user-profile-widget" id="header-user-widget" style="display: none;">
+                    <div class="user-avatar-btn">
+                        <img src="p6.jpg" alt="User profile" id="header-avatar-img">
+                        <span id="header-username">Premium Member</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu" class="menu-open-icon"></i>
+                <i data-lucide="x" class="menu-close-icon" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer-menu">
+        <ul class="mobile-nav-list">
+            <!-- Home Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-home-dropdown-toggle">
+                    <span>Home</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-home-menu" style="display: none;">
+                    <li><a href="home.html" class="mobile-dropdown-item" id="mob-go-home1">Home 1</a></li>
+                    <li><a href="home.html" class="mobile-dropdown-item" id="mob-go-home2">Home 2</a></li>
+                </ul>
+            </li>
+            <!-- Standard Links -->
+            <li><a href="about.html" class="mobile-nav-link" id="mob-go-about">About Us</a></li>
+            <li><a href="services.html" class="mobile-nav-link" id="mob-go-services">Our Services</a></li>
+            <li><a href="blog.html" class="mobile-nav-link" id="mob-go-blog">Blog</a></li>
+            <li><a href="contact.html" class="mobile-nav-link" id="mob-go-contact">Contact Us</a></li>
+            <!-- Dashboard Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-dashboard-dropdown-toggle">
+                    <span>Dashboard</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-dashboard-menu" style="display: none;">
+                    <li><a href="user-dashboard.html" class="mobile-dropdown-item" id="mob-go-user-dash">User Dashboard</a></li>
+                    <li><a href="admin-dashboard.html" class="mobile-dropdown-item" id="mob-go-admin-dash">Admin Dashboard</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="mobile-drawer-controls">
+            <!-- Side-by-side Toggles Row -->
+            <div class="mobile-toggles-row">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+            </div>
+            
+            <a href="login.html" class="drawer-login-btn" id="drawer-login-btn">
+                <i data-lucide="log-in"></i> Login
+            </a>
+            <div class="drawer-user-widget" id="drawer-user-widget" style="display: none; align-items: center; justify-content: space-between; width: 100%; padding: 15px 0 0; border-top: 1px solid var(--border-color);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="p6.jpg" alt="User profile" id="drawer-avatar-img" style="width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--accent-primary);">
+                    <span id="drawer-username" style="font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem;">Premium Member</span>
+                </div>
+                <button class="control-btn logout-link-btn" title="Logout" style="width: 40px; height: 40px; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: var(--accent-secondary); display: flex; align-items: center; justify-content: center;">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content wrapper for Marketing Views -->
+    <div id="marketing-container">
+        <main id="services-view" class="view-panel" >
+            <!-- 1. Services Overview -->
+            <section class="section-padding page-header-section" id="services-hero">
+                <div class="section-container text-center max-width-medium">
+                    <span class="view-badge">WHAT WE DO</span>
+                    <h1 class="page-title">Creator Services & Studio Booking</h1>
+                    <p class="page-lead">From renting acoustic booths to publishing feeds to major podcast networks. We handle the technical side so you can focus on writing scripts.</p>
+                </div>
+            </section>
+
+            <!-- 2. Audio Recording details -->
+            <section class="section-padding section-alt" id="services-production">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Physical Studio Rentals</h2>
+                        <p class="section-subtitle">Book soundproof rooms with engineers in-studio or connect remotely via IP codecs.</p>
+                    </div>
+                    <div class="detailed-services-grid">
+                        <div class="detail-service-card">
+                            <img src="st1.jpg" alt="Studio A - Multi-mic aerial view" class="studio-card-img">
+                            <div class="studio-card-body">
+                                <h3>Studio A (Multi-Mic Setup)</h3>
+                                <span class="price-badge">$75 / hour</span>
+                                <p>Our premier space. Perfect for up to 4 local speakers. Includes a dedicated sound engineer, Rodecaster Pro II board, Shure SM7B mics, and headphone monitors.</p>
+                                <ul class="service-features-list">
+                                    <li><i data-lucide="check"></i> Multi-track recording (RAW WAV format)</li>
+                                    <li><i data-lucide="check"></i> In-room engineer assistance</li>
+                                    <li><i data-lucide="check"></i> Decoupled floating walls</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="detail-service-card">
+                            <img src="st2.jpg" alt="Studio B - Solo host recording" class="studio-card-img">
+                            <div class="studio-card-body">
+                                <h3>Studio B (Solo &amp; Co-Host)</h3>
+                                <span class="price-badge">$45 / hour</span>
+                                <p>Optimized for solo creators, remote call interviews, or double co-hosts. High-quality acoustics, Neumann TLM103 mic, and Focusrite interface.</p>
+                                <ul class="service-features-list">
+                                    <li><i data-lucide="check"></i> Ideal for remote guest interviews</li>
+                                    <li><i data-lucide="check"></i> High-speed fiber internet connection</li>
+                                    <li><i data-lucide="check"></i> Audio post-processing templates included</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>        </div>
+            </section>
+
+            <!-- 3. Publishing & Distribution details -->
+            <section class="section-padding" id="services-distribution">
+                <div class="section-container">
+                    <div class="service-panel-full service-split-panel">
+                        <div class="panel-text-content">
+                            <div class="panel-icon"><i data-lucide="globe"></i></div>
+                            <h2>Global Distribution Pipeline</h2>
+                            <p>We push your audio files automatically to Spotify, Apple Podcasts, Amazon Music, and Overcast. Our custom server hosting features 99.9% uptime, fast bandwidth downloading, and instant transcription scripts.</p>
+                        </div>
+                        <div class="panel-image-content">
+                            <img src="gl.jpg" alt="Global Podcast Distribution Network" class="panel-side-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Monetization & Ads -->
+            <section class="section-padding section-alt" id="services-monetization">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Sponsorships & Member Monetization</h2>
+                        <p class="section-subtitle">How we help independent creators pay their rent.</p>
+                    </div>
+
+                    <div class="services-split-grid">
+                        <div class="split-image-container">
+                            <img src="sp.jpg" alt="Podcasting hosts live on air" class="services-side-img">
+                        </div>
+                        <div class="monetize-blocks">
+                            <div class="monetize-block">
+                                <i data-lucide="dollar-sign"></i>
+                                <h3>Dynamic Ad Insertion</h3>
+                                <p>Our server automatically inserts relevant local advertisements at predefined timestamps. You decide the ad frequency and category limits.</p>
+                            </div>
+                            <div class="monetize-block">
+                                <i data-lucide="star"></i>
+                                <h3>Premium Subscription Pipelines</h3>
+                                <p>Turn on our subscriber portal. We charge members $5/month, handle tax compliance, and deliver ad-free custom feeds to them automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Video podcasting & Live setups -->
+            <section class="section-padding" id="services-video">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Video Podcasting & Multi-Cam Recording</h2>
+                        <p class="section-subtitle">Create engaging content for YouTube and social clips.</p>
+                    </div>
+
+                    <div class="video-service-panel">
+                        <div class="video-text">
+                            <h3>4K Multi-Camera Studio Setup</h3>
+                            <p>Book Studio A configured for video. Includes three Sony Alpha FX30 cinema cameras, professional key lighting, high-quality audio routing, and automatic multi-cam edit files ready for export.</p>
+                            <span>Add video capabilities to any Studio A booking for flat <strong>+$40/hour</strong>.</span>
+                        </div>
+                        <div class="video-illustration-img">
+                            <img src="4k.jpg" alt="Video Podcast Camera setup in Studio A" class="panel-illustration-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. FAQs Accordion -->
+            <section class="section-padding section-alt" id="services-faq">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Frequently Asked Questions</h2>
+                        <p class="section-subtitle">Got questions about licensing, studio slots, or pricing? We have answers.</p>
+                    </div>
+
+                    <div class="faq-accordion-group">
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>Do I retain the rights to my podcast?</span>
+                                <i data-lucide="plus" class="faq-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Absolutely. You retain 100% intellectual property rights to your show. Resonate is a distribution and facilities network, not a record label.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>What is the minimum booking time?</span>
+                                <i data-lucide="plus" class="faq-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Our minimum booking time for either Studio A or Studio B is one hour. After the first hour, we bill in 30-minute intervals.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>How do the ad-free premium feeds work?</span>
+                                <i data-lucide="plus" class="faq-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>When you subscribe to a show premium, we generate a unique RSS URL token specifically for you. You paste this into your player, and our system serves files stripped of advertisement metadata.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="global-footer">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo" href="home.html" style="cursor: pointer;">
+                        <div class="logo-icon">
+                            <i data-lucide="mic"></i>
+                        </div>
+                        <span class="logo-text">RESONATE</span>
+                    </div>
+                    <p>Supporting independent podcasters, technical journalists, and audio arts composers since 2021.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="home.html" href="home.html">Home 1</a></li>
+                        <li><a href="home.html" href="home.html">Home 2</a></li>
+                        <li><a href="home.html" href="about.html">About Manifesto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="home.html" href="services.html">Booths Booking</a></li>
+                        <li><a href="home.html" href="services.html">Post-Production</a></li>
+                        <li><a href="home.html" href="services.html">Distribution Host</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="home.html" href="contact.html">General Contact</a></li>
+                        <li><a href="home.html" href="contact.html">Pitch a Show</a></li>
+                        <li><a href="home.html" href="contact.html">Emergency Ops</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-container">
+                    <span>© 2026 Resonate Network & Audio Production Studios. All rights reserved.</span>
+                    <div class="footer-bottom-links">
+                        <a href="home.html">Privacy Policy</a>
+                        <a href="home.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

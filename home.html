@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonate Network | Home One</title>
+    <meta name="description" content="Access ad-free premium RSS feeds, exclusive episodes, behind-the-scenes video drops, and network merchandise discounts. Custom studio production space.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' x2='12' y1='19' y2='22'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body class="dark-theme">
+
+    <header id="global-header">
+        <div class="header-container">
+            <!-- Logo Section -->
+            <a href="home.html" class="header-logo" id="header-logo-btn">
+                <div class="logo-icon">
+                    <i data-lucide="mic"></i>
+                </div>
+                <span class="logo-text">RESONATE</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <!-- Home Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="home-nav-link">Home <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="home.html" class="dropdown-item" id="go-home1">Home 1</a></li>
+                            <li><a href="home2.html" class="dropdown-item" id="go-home2">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <!-- Standard Links -->
+                    <li class="nav-item"><a href="about.html" class="nav-link" id="go-about">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link" id="go-services">Services</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link" id="go-blog">Blog</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link" id="go-contact">Contact</a></li>
+                    <!-- Dashboard Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="dashboard-nav-link">Dashboard <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="user-dashboard.html" class="dropdown-item" id="go-user-dash">User Dashboard</a></li>
+                            <li><a href="admin-dashboard.html" class="dropdown-item" id="go-admin-dash">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right Controls -->
+            <div class="header-controls">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction" title="Toggle RTL/LTR">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+                <!-- Auth Button -->
+                <a href="login.html" class="login-btn" id="header-login-btn">
+                    <i data-lucide="log-in"></i>
+                    <span>Login</span>
+                </a>
+                <!-- User Avatar (Hidden until logged in) -->
+                <div class="user-profile-widget" id="header-user-widget" style="display: none;">
+                    <div class="user-avatar-btn">
+                        <img src="p6.jpg" alt="User profile" id="header-avatar-img">
+                        <span id="header-username">Premium Member</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu" class="menu-open-icon"></i>
+                <i data-lucide="x" class="menu-close-icon" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer-menu">
+        <ul class="mobile-nav-list">
+            <!-- Home Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-home-dropdown-toggle">
+                    <span>Home</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-home-menu" style="display: none;">
+                    <li><a href="home.html" class="mobile-dropdown-item" id="mob-go-home1">Home 1</a></li>
+                    <li><a href="home2.html" class="mobile-dropdown-item" id="mob-go-home2">Home 2</a></li>
+                </ul>
+            </li>
+            <!-- Standard Links -->
+            <li><a href="about.html" class="mobile-nav-link" id="mob-go-about">About Us</a></li>
+            <li><a href="services.html" class="mobile-nav-link" id="mob-go-services">Our Services</a></li>
+            <li><a href="blog.html" class="mobile-nav-link" id="mob-go-blog">Blog</a></li>
+            <li><a href="contact.html" class="mobile-nav-link" id="mob-go-contact">Contact Us</a></li>
+            <!-- Dashboard Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-dashboard-dropdown-toggle">
+                    <span>Dashboard</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-dashboard-menu" style="display: none;">
+                    <li><a href="user-dashboard.html" class="mobile-dropdown-item" id="mob-go-user-dash">User Dashboard</a></li>
+                    <li><a href="admin-dashboard.html" class="mobile-dropdown-item" id="mob-go-admin-dash">Admin Dashboard</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="mobile-drawer-controls">
+            <!-- Side-by-side Toggles Row -->
+            <div class="mobile-toggles-row">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+            </div>
+            
+            <a href="login.html" class="drawer-login-btn" id="drawer-login-btn">
+                <i data-lucide="log-in"></i> Login
+            </a>
+            <div class="drawer-user-widget" id="drawer-user-widget" style="display: none; align-items: center; justify-content: space-between; width: 100%; padding: 15px 0 0; border-top: 1px solid var(--border-color);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="p6.jpg" alt="User profile" id="drawer-avatar-img" style="width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--accent-primary);">
+                    <span id="drawer-username" style="font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem;">Premium Member</span>
+                </div>
+                <button class="control-btn logout-link-btn" title="Logout" style="width: 40px; height: 40px; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: var(--accent-secondary); display: flex; align-items: center; justify-content: center;">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content wrapper for Marketing Views -->
+    <div id="marketing-container">
+        <main id="home1-view" class="view-panel">
+            <!-- 1. Hero Section -->
+            <section class="hero-section" id="home1-hero">
+                <div class="mesh-gradient"></div>
+                <div class="section-container hero-grid">
+                    <div class="hero-text-content">
+                        <div class="live-badge">
+                            <span class="live-dot"></span>
+                            <span>HOME ONE • STUDIO EXPERIENCE</span>
+                        </div>
+                        <h1 class="hero-title">Indie Voices.<br><span class="gradient-text">Premium Sound.</span></h1>
+                        <p class="hero-subtitle">The ultimate audio network for independent storytellers, technical geeks, and culture critics. Join for ad-free feeds, behind-the-scenes video drops, and member-only merchandise discounts.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" onclick="scrollToPlayer()">
+                                <i data-lucide="play-circle"></i> Start Listening
+                            </button>
+                            <button class="btn btn-secondary" onclick="navigateToSection('home1-podcasts')">
+                                Explore Our Shows
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-featured-card">
+                        <div class="glass-card featured-show">
+                            <div class="show-cover-wrapper">
+                                <img src="p3.jpg" alt="Featured Show Cover">
+                                <div class="play-overlay" onclick="playEpisode('p3.jpg', 'Indie Wave', 'EP 42: Synthesizing the 80s Revival Scene', '42')">
+                                    <i data-lucide="play"></i>
+                                </div>
+                            </div>
+                            <div class="show-info">
+                                <span class="show-tag">Featured Show</span>
+                                <h3 class="show-title">Indie Wave</h3>
+                                <p class="show-desc">Hosted by Elena Rostova. Today's episode explores the Roland Juno-106 and how modern bedroom producers model its chorus filter.</p>
+                                <div class="show-meta">
+                                    <span><i data-lucide="clock"></i> 62 Mins</span>
+                                    <span><i data-lucide="calendar"></i> Today</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Show Filters & Grid Section -->
+            <section class="section-padding" id="home1-podcasts">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Explore Network Shows</h2>
+                        <p class="section-subtitle">Diverse voices, singular audio quality. Stream right here or subscribe on Spotify & Apple Podcasts.</p>
+                    </div>
+
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">All Shows</button>
+                        <button class="filter-tab" data-filter="tech">Tech & Science</button>
+                        <button class="filter-tab" data-filter="culture">Society & Culture</button>
+                        <button class="filter-tab" data-filter="music">Audio Arts</button>
+                    </div>
+
+                    <div class="shows-grid">
+                        <!-- Show Card 1 -->
+                        <div class="show-card" data-category="tech">
+                            <div class="card-cover">
+                                <img src="p1.jpg" alt="The Daily Byte">
+                                <div class="play-badge" onclick="playEpisode('p1.jpg', 'The Daily Byte', 'EP 124: The Future of Neural Audio Architectures', '124')">
+                                    <i data-lucide="play"></i>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="category-badge">Tech & Science</span>
+                                <h3 class="show-card-title">The Daily Byte</h3>
+                                <p class="show-card-desc">Breaking down complex tech trends, neural interfaces, and the future of web standards daily.</p>
+                                <div class="card-footer-info">
+                                    <span>Host: Sarah Jenkins</span>
+                                    <span>5k+ Listens</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Show Card 2 -->
+                        <div class="show-card" data-category="music">
+                            <div class="card-cover">
+                                <img src="p2.jpg" alt="Behind the Sound">
+                                <div class="play-badge" onclick="playEpisode('p2.jpg', 'Behind the Sound', 'EP 89: Secrets of the Abbey Road Plate Reverbs', '89')">
+                                    <i data-lucide="play"></i>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="category-badge">Audio Arts</span>
+                                <h3 class="show-card-title">Behind the Sound</h3>
+                                <p class="show-card-desc">Exploring production workflows, microphone shootout, and the acoustics of legendary studios.</p>
+                                <div class="card-footer-info">
+                                    <span>Host: Marcus Vance</span>
+                                    <span>3.8k+ Listens</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Show Card 3 -->
+                        <div class="show-card" data-category="culture">
+                            <div class="card-cover">
+                                <img src="p4.jpg" alt="True Crime Decoded">
+                                <div class="play-badge" onclick="playEpisode('p4.jpg', 'True Crime Decoded', 'EP 56: The Cryptic Transmission of 1978', '56')">
+                                    <i data-lucide="play"></i>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="category-badge">Society & Culture</span>
+                                <h3 class="show-card-title">True Crime Decoded</h3>
+                                <p class="show-card-desc">An investigative journey into historical cold cases, audio telemetry clues, and mystery logs.</p>
+                                <div class="card-footer-info">
+                                    <span>Host: Sarah Jenkins</span>
+                                    <span>9.5k+ Listens</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Integrated Audio Player, Episodes list & Transcript Accordions -->
+            <section class="section-padding section-alt" id="home1-player">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Listen Now & Interactive Transcripts</h2>
+                        <p class="section-subtitle">Click to stream, and read along with our word-synced interactive transcripts. Tap a timestamp to jump.</p>
+                    </div>
+
+                    <div class="player-panel-grid">
+                        <!-- Left Panel: Playlist / Recent Releases -->
+                        <div class="recent-episodes-list">
+                            <h3 class="panel-title">Recent Network Releases</h3>
+                            
+                            <!-- Episode Item 1 -->
+                            <div class="episode-row active" onclick="loadTrack('p1.jpg', 'The Daily Byte', 'EP 124: The Future of Neural Audio Architectures', '124')">
+                                <div class="ep-num">124</div>
+                                <div class="ep-details">
+                                    <span class="ep-show">The Daily Byte</span>
+                                    <h4 class="ep-title">The Future of Neural Audio Architectures</h4>
+                                    <span class="ep-meta">Released: 1 day ago • Duration: 48:22</span>
+                                </div>
+                                <div class="ep-actions-group">
+                                    <button class="ep-play-btn" aria-label="Play Track"><i data-lucide="play"></i></button>
+                                    <button class="ep-transcript-toggle" onclick="toggleTranscript('ep124-trans', event)"><i data-lucide="file-text"></i> Transcript</button>
+                                </div>
+                            </div>
+                            <!-- Transcript Accordion 1 -->
+                            <div class="transcript-collapse" id="ep124-trans">
+                                <div class="transcript-content">
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(0)">[00:00]</span> <strong>Sarah Jenkins:</strong> Welcome back to The Daily Byte. Today we're diving deep into neural audio synthesis.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(15)">[00:15]</span> <strong>Sarah Jenkins:</strong> This isn't just about compression. We're talking about model weights replacing traditional waveforms.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(32)">[00:32]</span> <strong>Sarah Jenkins:</strong> Imagine a world where game assets are synthesised locally using tiny vector weights...</p>
+                                </div>
+                            </div>
+
+                            <!-- Episode Item 2 -->
+                            <div class="episode-row" onclick="loadTrack('p2.jpg', 'Behind the Sound', 'EP 89: Secrets of the Abbey Road Plate Reverbs', '89')">
+                                <div class="ep-num">89</div>
+                                <div class="ep-details">
+                                    <span class="ep-show">Behind the Sound</span>
+                                    <h4 class="ep-title">Secrets of the Abbey Road Plate Reverbs</h4>
+                                    <span class="ep-meta">Released: 4 days ago • Duration: 55:10</span>
+                                </div>
+                                <div class="ep-actions-group">
+                                    <button class="ep-play-btn" aria-label="Play Track"><i data-lucide="play"></i></button>
+                                    <button class="ep-transcript-toggle" onclick="toggleTranscript('ep89-trans', event)"><i data-lucide="file-text"></i> Transcript</button>
+                                </div>
+                            </div>
+                            <!-- Transcript Accordion 2 -->
+                            <div class="transcript-collapse" id="ep89-trans">
+                                <div class="transcript-content">
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(0)">[00:00]</span> <strong>Marcus Vance:</strong> Hello and welcome to Behind the Sound. Abbey Road's EMT plate units are legendary.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(20)">[00:20]</span> <strong>Marcus Vance:</strong> Today we examine how tension, temperature, and pickups created that iconic decay.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(45)">[00:45]</span> <strong>Marcus Vance:</strong> Let's load the sound files and listen to the difference in transient response...</p>
+                                </div>
+                            </div>
+
+                            <!-- Episode Item 3 -->
+                            <div class="episode-row" onclick="loadTrack('p3.jpg', 'Indie Wave', 'EP 42: Synthesizing the 80s Revival Scene', '42')">
+                                <div class="ep-num">42</div>
+                                <div class="ep-details">
+                                    <span class="ep-show">Indie Wave</span>
+                                    <h4 class="ep-title">Synthesizing the 80s Revival Scene</h4>
+                                    <span class="ep-meta">Released: 1 week ago • Duration: 62:15</span>
+                                </div>
+                                <div class="ep-actions-group">
+                                    <button class="ep-play-btn" aria-label="Play Track"><i data-lucide="play"></i></button>
+                                    <button class="ep-transcript-toggle" onclick="toggleTranscript('ep42-trans', event)"><i data-lucide="file-text"></i> Transcript</button>
+                                </div>
+                            </div>
+                            <!-- Transcript Accordion 3 -->
+                            <div class="transcript-collapse" id="ep42-trans">
+                                <div class="transcript-content">
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(0)">[00:00]</span> <strong>Elena Rostova:</strong> This is Indie Wave. Synthesizers defined an entire era.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(10)">[00:10]</span> <strong>Elena Rostova:</strong> We look at the Roland Juno-106 and how modern bedroom producers model its chorus filter.</p>
+                                </div>
+                            </div>
+
+                            <!-- Episode Item 4 (Issue 5) -->
+                            <div class="episode-row" onclick="loadTrack('p4.jpg', 'True Crime Decoded', 'EP 56: The Cryptic Transmission of 1978', '56')">
+                                <div class="ep-num">56</div>
+                                <div class="ep-details">
+                                    <span class="ep-show">True Crime Decoded</span>
+                                    <h4 class="ep-title">The Cryptic Transmission of 1978</h4>
+                                    <span class="ep-meta">Released: 1 week ago • Duration: 38:45</span>
+                                </div>
+                                <div class="ep-actions-group">
+                                    <button class="ep-play-btn" aria-label="Play Track"><i data-lucide="play"></i></button>
+                                    <button class="ep-transcript-toggle" onclick="toggleTranscript('ep56-trans', event)"><i data-lucide="file-text"></i> Transcript</button>
+                                </div>
+                            </div>
+                            <!-- Transcript Accordion 4 -->
+                            <div class="transcript-collapse" id="ep56-trans">
+                                <div class="transcript-content">
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(0)">[00:00]</span> <strong>Sarah Jenkins:</strong> This is True Crime Decoded. In 1978, a shortwave signal interrupted normal broadcasts.</p>
+                                    <p class="transcript-line"><span class="timestamp" onclick="seekTo(25)">[00:25]</span> <strong>Sarah Jenkins:</strong> The telemetry data we recovered suggests it wasn't a standard atmospheric bounce...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: Big Interactive Audio Deck -->
+                        <div class="audio-deck">
+                            <div class="deck-cover">
+                                <img src="p1.jpg" alt="Active track cover" id="deck-img">
+                                <div class="deck-overlay-effects"></div>
+                            </div>
+                            <div class="deck-now-playing">
+                                <span class="deck-show" id="deck-show-name">The Daily Byte</span>
+                                <h3 class="deck-title" id="deck-title-text">EP 124: The Future of Neural Audio Architectures</h3>
+                            </div>
+                            
+                            <!-- Custom HTML5 Audio Player Interface -->
+                            <div class="player-controls-container">
+                                <!-- Waveform Visualization (Mock) -->
+                                <div class="waveform-visualizer">
+                                    <span class="wave-bar" style="height:20%"></span>
+                                    <span class="wave-bar" style="height:40%"></span>
+                                    <span class="wave-bar" style="height:65%"></span>
+                                    <span class="wave-bar" style="height:80%"></span>
+                                    <span class="wave-bar" style="height:55%"></span>
+                                    <span class="wave-bar" style="height:90%"></span>
+                                    <span class="wave-bar" style="height:70%"></span>
+                                    <span class="wave-bar" style="height:45%"></span>
+                                    <span class="wave-bar" style="height:35%"></span>
+                                    <span class="wave-bar" style="height:60%"></span>
+                                    <span class="wave-bar" style="height:75%"></span>
+                                    <span class="wave-bar" style="height:95%"></span>
+                                    <span class="wave-bar" style="height:50%"></span>
+                                    <span class="wave-bar" style="height:30%"></span>
+                                    <span class="wave-bar" style="height:15%"></span>
+                                </div>
+
+                                <div class="progress-bar-wrapper">
+                                    <span class="current-time">0:00</span>
+                                    <input type="range" class="player-progress" min="0" max="100" value="0" id="deck-slider">
+                                    <span class="total-duration">48:22</span>
+                                </div>
+
+                                <div class="deck-controls">
+                                    <button class="deck-btn" id="deck-prev-btn"><i data-lucide="skip-back"></i></button>
+                                    <button class="deck-btn deck-play-toggle" id="deck-play-btn"><i data-lucide="play"></i></button>
+                                    <button class="deck-btn" id="deck-next-btn"><i data-lucide="skip-forward"></i></button>
+                                </div>
+
+                                <div class="deck-extra-controls">
+                                    <div class="volume-container">
+                                        <i data-lucide="volume-2" id="volume-icon"></i>
+                                        <input type="range" class="volume-slider" min="0" max="100" value="80" id="deck-volume">
+                                    </div>
+                                    <div class="speed-container">
+                                        <button class="speed-btn" id="deck-speed">1.0x</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Multi-platform Subscribe Badges -->
+                            <div class="subscribe-cluster">
+                                <a href="https://spotify.com" target="_blank" rel="noopener" class="sub-link spotify">
+                                    <i data-lucide="music"></i> Spotify
+                                </a>
+                                <a href="https://apple.com" target="_blank" rel="noopener" class="sub-link apple">
+                                    <i data-lucide="podcast"></i> Apple Podcasts
+                                </a>
+                                <a href="#" class="sub-link rss" onclick="showRssToast(event)">
+                                    <i data-lucide="rss"></i> RSS Feed
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Host Spotlight & Bios Section -->
+            <section class="section-padding" id="home1-hosts">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Meet the Voices Behind the Microphones</h2>
+                        <p class="section-subtitle">Our team consists of veteran journalists, award-winning sound designers, and technical visionaries.</p>
+                    </div>
+
+                    <div class="hosts-grid">
+                        <!-- Host 1 -->
+                        <div class="host-profile-card">
+                            <div class="host-avatar">
+                                <img src="male1.avif" alt="Sarah Jenkins">
+                            </div>
+                            <div class="host-details">
+                                <h3 class="host-name">Sarah Jenkins</h3>
+                                <span class="host-title">Host, The Daily Byte & True Crime Decoded</span>
+                                <p class="host-bio">Sarah is a former tech correspondent with 12 years of experience analyzing software architectures, computing systems, and historical telemetry data.</p>
+                                <div class="host-socials">
+                                    <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                                    <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Host 2 -->
+                        <div class="host-profile-card">
+                            <div class="host-avatar">
+                                <img src="f1.avif" alt="Marcus Vance">
+                            </div>
+                            <div class="host-details">
+                                <h3 class="host-name">Marcus Vance</h3>
+                                <span class="host-title">Host, Behind the Sound & Lead Engineer</span>
+                                <p class="host-bio">Marcus is a veteran recording engineer. He designed three of the commercial spaces in our network and specializes in vintage mixing desks and analog preamps.</p>
+                                <div class="host-socials">
+                                    <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                                    <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Host 3 -->
+                        <div class="host-profile-card">
+                            <div class="host-avatar">
+                                <img src="male2.avif" alt="Elena Rostova">
+                            </div>
+                            <div class="host-details">
+                                <h3 class="host-name">Elena Rostova</h3>
+                                <span class="host-title">Host, Indie Wave & Creative Director</span>
+                                <p class="host-bio">Elena is a composer and sound designer whose synthesis pieces have been featured in independent film scores across Europe. She loves modular racks.</p>
+                                <div class="host-socials">
+                                    <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                                    <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Studio & Production Services Section -->
+            <section class="section-padding section-alt" id="home1-services-info">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Physical Studios & Audio Post-Production</h2>
+                        <p class="section-subtitle">We rent soundproofed rooms, record high-fidelity multi-mic sessions, and offer remote editing, mixing, and mastering services.</p>
+                    </div>
+
+                    <div class="services-brief-grid">
+                        <div class="service-brief-card">
+                            <div class="service-icon"><i data-lucide="mic"></i></div>
+                            <h3>Studio Recording</h3>
+                            <p>Equipped with industry-standard Shure SM7B, Neumann U87, and custom acoustic panels. Book rooms A or B today.</p>
+                            <a href="#" class="service-arrow-link" onclick="navigateToView('services')">Learn pricing <i data-lucide="arrow-right"></i></a>
+                        </div>
+                        <div class="service-brief-card">
+                            <div class="service-icon"><i data-lucide="sliders"></i></div>
+                            <h3>Editing & Sound Design</h3>
+                            <p>Let our professional engineers handle noise reduction, mouth de-click, and custom atmospheric spatial design.</p>
+                            <a href="#" class="service-arrow-link" onclick="navigateToView('services')">Learn pricing <i data-lucide="arrow-right"></i></a>
+                        </div>
+                        <div class="service-brief-card">
+                            <div class="service-icon"><i data-lucide="radio"></i></div>
+                            <h3>Distribution & Launch</h3>
+                            <p>Get listed instantly on Spotify, Apple, Google, and Amazon. Dynamic ad integration and premium subscription pipelines.</p>
+                            <a href="#" class="service-arrow-link" onclick="navigateToView('services')">Learn pricing <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Network Statistics & Premium Subscriber CTA -->
+            <section class="section-padding cta-section" id="home1-cta">
+                <div class="section-container">
+                    <div class="cta-banner">
+                        <div class="cta-text">
+                            <h2>Get the Premium Experience</h2>
+                            <p>Support our network of independent audio creators and receive ad-free RSS feeds, exclusive bonus episodes, behind-the-scenes video drops, and network merchandise discounts.</p>
+                            <div class="cta-stats-row">
+                                <div class="cta-stat">
+                                    <span class="stat-number">12M+</span>
+                                    <span class="stat-lbl">Downloads</span>
+                                </div>
+                                <div class="cta-stat">
+                                    <span class="stat-number">25+</span>
+                                    <span class="stat-lbl">Active Shows</span>
+                                </div>
+                                <div class="cta-stat">
+                                    <span class="stat-number">25k+</span>
+                                    <span class="stat-lbl">Members</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-form-panel">
+                            <h3>Subscribe to Newsletter</h3>
+                            <p class="cta-form-desc">Get weekly show summaries, audio tip writeups, and recording schedules.</p>
+                            <form id="newsletter-form" onsubmit="handleFormSubmit(event, 'Newsletter')">
+                                <div class="input-group">
+                                    <label for="newsletter-email" class="sr-only">Email Address</label>
+                                    <input type="email" id="newsletter-email" placeholder="Your Email Address" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Sign Up Free</button>
+                            </form>
+                            <div class="or-separator"><span>OR JOIN PREMIUM</span></div>
+                            <button class="btn btn-accent btn-block" onclick="navigateToView('user-dashboard')">
+                                <i data-lucide="star"></i> Access Premium Dashboard
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="global-footer">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo" style="cursor: pointer;">
+                        <div class="logo-icon">
+                            <i data-lucide="mic"></i>
+                        </div>
+                        <span class="logo-text">RESONATE</span>
+                    </div>
+                    <p>Supporting independent podcasters, technical journalists, and audio arts composers since 2021.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="home.html">Home One</a></li>
+                        <li><a href="home2.html">Home Two</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Studio Booking</a></li>
+                        <li><a href="services.html">Post-Production</a></li>
+                        <li><a href="services.html">Distribution</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">Pitch a Show</a></li>
+                        <li><a href="contact.html">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-container">
+                    <span>© 2026 Resonate Network & Audio Production Studios. All rights reserved.</span>
+                    <div class="footer-bottom-links">
+                        <a href="home.html">Privacy Policy</a>
+                        <a href="home.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

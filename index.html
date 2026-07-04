@@ -1,27 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=home.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resonate Network | Premium Indie Podcast Studio</title>
-    <meta name="description" content="Access ad-free premium RSS feeds, exclusive episodes, behind-the-scenes video drops, and network merchandise discounts. Custom studio production space.">
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' x2='12' y1='19' y2='22'/%3E%3C/svg%3E">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
-    <!-- CSS File -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Leaflet Maps CSS & JS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
-<body class="dark-theme">
+<body>
+    <p>Redirecting to the home page...</p>
+</body>
+</html>
 
     <!-- Global Marketing Header -->
     <header id="global-header">
@@ -1380,7 +1368,7 @@
         <!-- Sidebar Navigation -->
         <aside class="dash-sidebar">
             <div class="sidebar-top">
-                <div class="sidebar-logo" onclick="navigateToView('home1')" style="cursor: pointer;">
+                <div class="header-logo sidebar-logo" onclick="navigateToView('home1')" style="cursor: pointer;">
                     <div class="logo-icon">
                         <i data-lucide="mic"></i>
                     </div>
@@ -1416,28 +1404,30 @@
                         <i data-lucide="menu"></i>
                     </button>
                     <div class="dash-header-title">
-                        <span class="welcome-text">WELCOME BACK,</span>
-                        <h1 class="dash-heading" id="user-welcome-name">Premium Subscriber</h1>
+                        <div class="dash-identity-row">
+                            <div class="profile-initial-circle profile-initial-user" aria-label="Rithik profile">R</div>
+                            <div>
+                                <span class="welcome-text">WELCOME BACK</span>
+                                <h1 class="dash-heading" id="user-welcome-name">Welcome back, Rithik</h1>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="dash-header-controls">
-                    <!-- Theme Toggle -->
                     <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
                         <i data-lucide="sun" class="sun-icon"></i>
                         <i data-lucide="moon" class="moon-icon"></i>
                     </button>
-                    <!-- LTR/RTL Toggle -->
                     <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction">
                         <span class="rtl-text">RTL</span>
                         <span class="ltr-text">LTR</span>
                     </button>
-                    <!-- User Profile Widget (Issue 3 & 13) -->
-                    <div class="dash-user-profile" id="dash-user-profile-widget">
-                        <div class="dash-profile-info">
-                            <span class="dash-profile-welcome">Hello,</span>
-                            <span class="dash-profile-name" id="dash-user-username">Premium Member</span>
+                    <div class="dash-profile-pill">
+                        <div class="profile-initial-circle profile-initial-user" aria-label="Rithik profile">R</div>
+                        <div class="dash-profile-copy">
+                            <span class="dash-profile-name">Rithik</span>
+                            <a href="login.html" class="profile-link">Sign out</a>
                         </div>
-                        <img src="p6.jpg" alt="User avatar" class="dash-profile-avatar" id="dash-user-avatar">
                     </div>
                 </div>
             </header>
@@ -1489,6 +1479,20 @@
                         <h3>Category Distribution</h3>
                         <div class="chart-canvas-container">
                             <canvas id="userCategoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-section-panel featured-media-panel">
+                    <div class="panel-header-row">
+                        <h3>Featured Drop</h3>
+                        <a href="#" class="btn btn-small">Open</a>
+                    </div>
+                    <div class="featured-image-card">
+                        <img src="p3.jpg" alt="Featured studio drop">
+                        <div class="featured-image-body">
+                            <h4>Exclusive studio session for your inbox</h4>
+                            <p>Enjoy a fresh behind-the-scenes audio drop with premium members only.</p>
                         </div>
                     </div>
                 </div>
@@ -1678,17 +1682,13 @@
         <!-- Sidebar Navigation -->
         <aside class="dash-sidebar">
             <div class="sidebar-top">
-                <div class="sidebar-logo" onclick="navigateToView('home1')" style="cursor: pointer;">
+                <div class="header-logo sidebar-logo" onclick="navigateToView('home1')" style="cursor: pointer;">
                     <div class="logo-icon">
                         <i data-lucide="mic"></i>
                     </div>
                     <span class="logo-text">RESONATE</span>
                 </div>
-                    <span class="portal-badge admin-badge">ADMIN PORTAL</span>
-                    <div class="admin-profile">
-                        <img src="admin-avatar.jpg" alt="Admin" class="profile-pic" />
-                        <span class="profile-name">Admin</span>
-                    </div>
+                <span class="portal-badge admin-badge">ADMIN PORTAL</span>
             </div>
             <nav class="sidebar-nav">
                 <ul>
@@ -1717,28 +1717,30 @@
                         <i data-lucide="menu"></i>
                     </button>
                     <div class="dash-header-title">
-                        <span class="welcome-text">ADMINISTRATION PANEL,</span>
-                        <h1 class="dash-heading">Network Overview</h1>
+                        <div class="dash-identity-row">
+                            <div class="profile-initial-circle profile-initial-admin" aria-label="Admin profile">A</div>
+                            <div>
+                                <span class="welcome-text">ADMIN CONTROL CENTER</span>
+                                <h1 class="dash-heading">Studio & Audience Overview</h1>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="dash-header-controls">
-                    <!-- Theme Toggle -->
                     <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
                         <i data-lucide="sun" class="sun-icon"></i>
                         <i data-lucide="moon" class="moon-icon"></i>
                     </button>
-                    <!-- LTR/RTL Toggle -->
                     <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction">
                         <span class="rtl-text">RTL</span>
                         <span class="ltr-text">LTR</span>
                     </button>
-                    <!-- Admin Profile Widget (Issue 3 & 13) -->
-                    <div class="dash-user-profile" id="dash-admin-profile-widget">
-                        <div class="dash-profile-info">
-                            <span class="dash-profile-welcome">Hello,</span>
-                            <span class="dash-profile-name" id="dash-admin-username">System Admin</span>
+                    <div class="dash-profile-pill">
+                        <div class="profile-initial-circle profile-initial-admin" aria-label="Admin profile">A</div>
+                        <div class="dash-profile-copy">
+                            <span class="dash-profile-name">Admin</span>
+                            <a href="login.html" class="profile-link">Sign out</a>
                         </div>
-                        <img src="p7.jpg" alt="Admin avatar" class="dash-profile-avatar" id="dash-admin-avatar">
                     </div>
                 </div>
             </header>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonate Network | Admin Dashboard</title>
+    <meta name="description" content="Admin dashboard for managing shows, subscribers, and studio operations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <aside class="dash-sidebar">
+            <div class="sidebar-top">
+                <a href="home.html" class="header-logo sidebar-logo">
+                    <div class="logo-icon"><i data-lucide="mic"></i></div>
+                    <span class="logo-text">RESONATE</span>
+                </a>
+                <span class="portal-badge admin-badge">ADMIN PORTAL</span>
+
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="admin-dashboard.html" class="sidebar-link active"><i data-lucide="layout-dashboard"></i><span>Overview</span></a></li>
+                        <li><a href="#" class="sidebar-link"><i data-lucide="radio"></i><span>Shows</span></a></li>
+                        <li><a href="#" class="sidebar-link"><i data-lucide="users"></i><span>Subscribers</span></a></li>
+                        <li><a href="#" class="sidebar-link"><i data-lucide="calendar-days"></i><span>Schedule</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div>
+                <div class="sidebar-separator"></div>
+                <a href="login.html" class="sidebar-link logout-link-btn"><i data-lucide="log-out"></i><span>Logout</span></a>
+            </div>
+        </aside>
+
+        <main class="dash-content-area">
+            <div class="dash-content-header">
+                <div class="dash-header-title">
+                    <div class="dash-identity-row">
+                        <div class="profile-initial-circle profile-initial-admin" aria-label="Admin profile">A</div>
+                        <div>
+                            <span class="welcome-text">ADMIN CONTROL CENTER</span>
+                            <h1 class="dash-heading">Studio & Audience Overview</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="dash-header-controls">
+                    <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></button>
+                    <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction"><span class="rtl-text">RTL</span><span class="ltr-text">LTR</span></button>
+                    <div class="dash-profile-pill">
+                        <div class="profile-initial-circle profile-initial-admin" aria-label="Admin profile">A</div>
+                        <div class="dash-profile-copy">
+                            <span class="dash-profile-name">Admin</span>
+                            <a href="login.html" class="profile-link">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="users"></i></div>
+                    <div class="stat-data"><h3>Subscribers</h3><div class="stat-val">25.4K</div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="radio"></i></div>
+                    <div class="stat-data"><h3>Active Shows</h3><div class="stat-val">18</div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="calendar-days"></i></div>
+                    <div class="stat-data"><h3>Live Sessions</h3><div class="stat-val">7</div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="trending-up"></i></div>
+                    <div class="stat-data"><h3>Growth</h3><div class="stat-val">+12%</div></div>
+                </div>
+            </div>
+
+            <div class="dash-charts-grid">
+                <div class="dash-chart-card">
+                    <h3>Audience Growth</h3>
+                    <div class="chart-canvas-container">
+                        <svg class="dashboard-chart-svg" viewBox="0 0 280 180" role="img" aria-label="Audience growth chart">
+                            <g class="chart-grid-lines">
+                                <line x1="20" y1="150" x2="260" y2="150"></line>
+                                <line x1="20" y1="110" x2="260" y2="110"></line>
+                                <line x1="20" y1="70" x2="260" y2="70"></line>
+                                <line x1="20" y1="30" x2="260" y2="30"></line>
+                            </g>
+                            <path d="M20 120 C45 108, 70 96, 95 84 S135 74, 160 66 S200 56, 225 42 S245 36, 260 24" class="chart-line pink"></path>
+                            <circle cx="95" cy="84" r="4" class="chart-point"></circle>
+                            <circle cx="160" cy="66" r="4" class="chart-point"></circle>
+                            <circle cx="225" cy="42" r="4" class="chart-point"></circle>
+                            <circle cx="260" cy="24" r="4" class="chart-point"></circle>
+                            <g class="chart-labels">
+                                <text x="20" y="172">Jan</text>
+                                <text x="85" y="172">Mar</text>
+                                <text x="150" y="172">May</text>
+                                <text x="225" y="172">Jun</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="dash-chart-card">
+                    <h3>Studio Load</h3>
+                    <div class="chart-canvas-container">
+                        <svg class="dashboard-chart-svg donut-chart" viewBox="0 0 220 180" role="img" aria-label="Studio load chart">
+                            <circle cx="110" cy="90" r="60" class="donut-ring"></circle>
+                            <circle cx="110" cy="90" r="60" class="donut-segment spotify"></circle>
+                            <circle cx="110" cy="90" r="60" class="donut-segment apple"></circle>
+                            <circle cx="110" cy="90" r="60" class="donut-segment web"></circle>
+                            <circle cx="110" cy="90" r="40" class="donut-center"></circle>
+                            <text x="110" y="86" text-anchor="middle" class="donut-text">42%</text>
+                            <text x="110" y="104" text-anchor="middle" class="donut-subtext">Peak</text>
+                        </svg>
+                        <div class="dashboard-chart-legend">
+                            <span><i class="legend-swatch green"></i>Spotify</span>
+                            <span><i class="legend-swatch red"></i>Apple</span>
+                            <span><i class="legend-swatch violet"></i>Web</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dash-section-panel">
+                <div class="panel-header-row">
+                    <h3>Recent Activity</h3>
+                    <a href="#" class="btn btn-small">Export</a>
+                </div>
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>Show</th>
+                            <th>Status</th>
+                            <th>Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>The Daily Byte</td><td><span class="status-active">Live</span></td><td>2 mins ago</td></tr>
+                        <tr><td>Behind the Sound</td><td><span class="status-pending">Pending</span></td><td>15 mins ago</td></tr>
+                        <tr><td>Indie Wave</td><td><span class="status-active">Live</span></td><td>1 hour ago</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

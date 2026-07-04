@@ -103,7 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 1. Initialize Icons
-    lucide.createIcons();
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+    }
 
     // 2. Initialize Audio Element
     state.audioPlayer = new Audio();
@@ -116,7 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Setup Theme & Direction Toggle Listeners
     setupToggles();
 
-    // 5. Setup Form Submissions
+    // 5. Initialize dashboard charts for standalone dashboard pages
+    window.setTimeout(() => {
+        initDashboardChartsIfNeeded();
+    }, 150);
+
+    // 6. Setup Form Submissions
     setupFormHandlers();
 
     // 6. Populate Admin Tables
@@ -834,13 +841,37 @@ function logout() {
 }
 
 // --- Chart.js Graphics Configurations ---
+function initDashboardChartsIfNeeded() {
+    if (document.getElementById('userListeningChart') || document.getElementById('userCategoryChart')) {
+        initUserDashboardCharts();
+    }
+    if (document.getElementById('adminSubscriberChart') || document.getElementById('adminPlatformChart')) {
+        initAdminDashboardCharts();
+    }
+}
+
 function initUserDashboardCharts() {
     const isDark = !document.body.classList.contains('light-theme');
     const colorGrid = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)';
     const colorText = isDark ? '#9ca3af' : '#4b5563';
 
+    const listeningCanvas = document.getElementById('userListeningChart');
+    const categoryCanvas = document.getElementById('userCategoryChart');
+    if (!listeningCanvas || !categoryCanvas) return;
+
+    if (typeof Chart === 'undefined') {
+        renderFallbackUserCharts();
+        return;
+    }
+
+    const listeningContext = listeningCanvas.getContext('2d');
+    if (!listeningContext || !categoryCanvas.getContext('2d')) {
+        renderFallbackUserCharts();
+        return;
+    }
+
     // 1. Listening line Chart
-    const ctxListening = document.getElementById('userListeningChart').getContext('2d');
+    const ctxListening = listeningContext;
     if (state.charts.listening) state.charts.listening.destroy();
 
     state.charts.listening = new Chart(ctxListening, {
@@ -871,7 +902,7 @@ function initUserDashboardCharts() {
     });
 
     // 2. Category Donut Chart
-    const ctxCategory = document.getElementById('userCategoryChart').getContext('2d');
+    const ctxCategory = categoryCanvas.getContext('2d');
     if (state.charts.category) state.charts.category.destroy();
 
     state.charts.category = new Chart(ctxCategory, {
@@ -902,8 +933,24 @@ function initAdminDashboardCharts() {
     const colorGrid = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)';
     const colorText = isDark ? '#9ca3af' : '#4b5563';
 
+    const subsCanvas = document.getElementById('adminSubscriberChart');
+    const platformCanvas = document.getElementById('adminPlatformChart');
+    if (!subsCanvas || !platformCanvas) return;
+
+    if (typeof Chart === 'undefined') {
+        renderFallbackAdminCharts();
+        return;
+    }
+
+    const subsContext = subsCanvas.getContext('2d');
+    const platformContext = platformCanvas.getContext('2d');
+    if (!subsContext || !platformContext) {
+        renderFallbackAdminCharts();
+        return;
+    }
+
     // 1. Subscriber Growth line chart
-    const ctxSubs = document.getElementById('adminSubscriberChart').getContext('2d');
+    const ctxSubs = subsContext;
     if (state.charts.subs) state.charts.subs.destroy();
 
     state.charts.subs = new Chart(ctxSubs, {
@@ -934,7 +981,7 @@ function initAdminDashboardCharts() {
     });
 
     // 2. Download Platform Pie chart
-    const ctxPlatform = document.getElementById('adminPlatformChart').getContext('2d');
+    const ctxPlatform = platformContext;
     if (state.charts.platform) state.charts.platform.destroy();
 
     state.charts.platform = new Chart(ctxPlatform, {
@@ -958,6 +1005,32 @@ function initAdminDashboardCharts() {
             }
         }
     });
+}
+
+function renderFallbackUserCharts() {
+    const listeningContainer = document.getElementById('userListeningChart')?.parentElement;
+    const categoryContainer = document.getElementById('userCategoryChart')?.parentElement;
+
+    if (listeningContainer) {
+        listeningContainer.innerHTML = '<div class="chart-fallback chart-bars"><div class="bar" style="height: 32%"></div><div class="bar" style="height: 46%"></div><div class="bar" style="height: 28%"></div><div class="bar" style="height: 58%"></div><div class="bar" style="height: 48%"></div><div class="bar" style="height: 72%"></div><div class="bar" style="height: 92%"></div></div>';
+    }
+
+    if (categoryContainer) {
+        categoryContainer.innerHTML = '<div class="chart-fallback chart-donut"><div class="donut-ring"></div><div class="chart-legend"><span><i style="background:#8b5cf6"></i>Tech</span><span><i style="background:#ec4899"></i>Audio</span><span><i style="background:#3b82f6"></i>Culture</span></div></div>';
+    }
+}
+
+function renderFallbackAdminCharts() {
+    const subsContainer = document.getElementById('adminSubscriberChart')?.parentElement;
+    const platformContainer = document.getElementById('adminPlatformChart')?.parentElement;
+
+    if (subsContainer) {
+        subsContainer.innerHTML = '<div class="chart-fallback chart-bars"><div class="bar" style="height: 38%"></div><div class="bar" style="height: 48%"></div><div class="bar" style="height: 58%"></div><div class="bar" style="height: 68%"></div><div class="bar" style="height: 82%"></div><div class="bar" style="height: 94%"></div></div>';
+    }
+
+    if (platformContainer) {
+        platformContainer.innerHTML = '<div class="chart-fallback chart-donut"><div class="donut-ring"></div><div class="chart-legend"><span><i style="background:#1ed760"></i>Spotify</span><span><i style="background:#fc3c44"></i>Apple</span><span><i style="background:#8b5cf6"></i>Web</span><span><i style="background:#f26522"></i>Overcast</span></div></div>';
+    }
 }
 
 function updateChartsThemeColors() {

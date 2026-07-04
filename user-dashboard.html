@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonate Network | User Dashboard</title>
+    <meta name="description" content="User dashboard for subscriptions, listening activity, and account tools.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <aside class="dash-sidebar">
+            <div class="sidebar-top">
+                <a href="home.html" class="header-logo sidebar-logo">
+                    <div class="logo-icon"><i data-lucide="mic"></i></div>
+                    <span class="logo-text">RESONATE</span>
+                </a>
+                <span class="portal-badge">USER PORTAL</span>
+
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="user-dashboard.html" class="sidebar-link active"><i data-lucide="layout-dashboard"></i><span>Overview</span></a></li>
+                        <li><a href="#" class="sidebar-link"><i data-lucide="headphones"></i><span>Listening</span></a></li>
+                        <li><a href="#" class="sidebar-link"><i data-lucide="credit-card"></i><span>Billing</span></a></li>
+                        <li><a href="#" class="sidebar-link"><i data-lucide="settings"></i><span>Settings</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div>
+                <div class="sidebar-separator"></div>
+                <a href="login.html" class="sidebar-link logout-link-btn"><i data-lucide="log-out"></i><span>Logout</span></a>
+            </div>
+        </aside>
+
+        <main class="dash-content-area">
+            <div class="dash-content-header">
+                <div class="dash-header-title">
+                    <div class="dash-identity-row">
+                        <div class="profile-initial-circle profile-initial-user" aria-label="Rithik profile">R</div>
+                        <div>
+                            <span class="welcome-text">WELCOME BACK</span>
+                            <h1 class="dash-heading">Welcome back, Rithik</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="dash-header-controls">
+                    <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></button>
+                    <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction"><span class="rtl-text">RTL</span><span class="ltr-text">LTR</span></button>
+                    <div class="dash-profile-pill">
+                        <div class="profile-initial-circle profile-initial-user" aria-label="Rithik profile">R</div>
+                        <div class="dash-profile-copy">
+                            <span class="dash-profile-name">Rithik</span>
+                            <a href="login.html" class="profile-link">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="headphones"></i></div>
+                    <div class="stat-data"><h3>Minutes Listened</h3><div class="stat-val">1,248</div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="star"></i></div>
+                    <div class="stat-data"><h3>Premium Access</h3><div class="stat-val">Active</div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="bell"></i></div>
+                    <div class="stat-data"><h3>New Drops</h3><div class="stat-val">4</div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="gift"></i></div>
+                    <div class="stat-data"><h3>Offers</h3><div class="stat-val">2</div></div>
+                </div>
+            </div>
+
+            <div class="dash-charts-grid">
+                <div class="dash-chart-card">
+                    <h3>Weekly Listening Pattern</h3>
+                    <div class="chart-canvas-container">
+                        <svg class="dashboard-chart-svg" viewBox="0 0 280 180" role="img" aria-label="Weekly listening pattern chart">
+                            <g class="chart-grid-lines">
+                                <line x1="20" y1="150" x2="260" y2="150"></line>
+                                <line x1="20" y1="110" x2="260" y2="110"></line>
+                                <line x1="20" y1="70" x2="260" y2="70"></line>
+                                <line x1="20" y1="30" x2="260" y2="30"></line>
+                            </g>
+                            <path d="M20 120 C45 100, 65 108, 85 92 S125 72, 145 80 S185 100, 205 62 S245 38, 260 30" class="chart-line"></path>
+                            <circle cx="85" cy="92" r="4" class="chart-point"></circle>
+                            <circle cx="145" cy="80" r="4" class="chart-point"></circle>
+                            <circle cx="205" cy="62" r="4" class="chart-point"></circle>
+                            <circle cx="260" cy="30" r="4" class="chart-point"></circle>
+                            <g class="chart-labels">
+                                <text x="20" y="172">Mon</text>
+                                <text x="80" y="172">Wed</text>
+                                <text x="140" y="172">Fri</text>
+                                <text x="220" y="172">Sun</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="dash-chart-card">
+                    <h3>Favorite Shows</h3>
+                    <div class="chart-canvas-container">
+                        <svg class="dashboard-chart-svg donut-chart" viewBox="0 0 220 180" role="img" aria-label="Favorite shows chart">
+                            <circle cx="110" cy="90" r="60" class="donut-ring"></circle>
+                            <circle cx="110" cy="90" r="60" class="donut-segment tech"></circle>
+                            <circle cx="110" cy="90" r="60" class="donut-segment audio"></circle>
+                            <circle cx="110" cy="90" r="60" class="donut-segment culture"></circle>
+                            <circle cx="110" cy="90" r="40" class="donut-center"></circle>
+                            <text x="110" y="86" text-anchor="middle" class="donut-text">45%</text>
+                            <text x="110" y="104" text-anchor="middle" class="donut-subtext">Top</text>
+                        </svg>
+                        <div class="dashboard-chart-legend">
+                            <span><i class="legend-swatch violet"></i>Tech</span>
+                            <span><i class="legend-swatch pink"></i>Audio</span>
+                            <span><i class="legend-swatch blue"></i>Culture</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dash-section-panel featured-media-panel">
+                <div class="panel-header-row">
+                    <h3>Featured Drop</h3>
+                    <a href="#" class="btn btn-small">Open</a>
+                </div>
+                <div class="featured-image-card">
+                    <img src="p3.jpg" alt="Featured studio drop">
+                    <div class="featured-image-body">
+                        <h4>Exclusive studio session for your inbox</h4>
+                        <p>Enjoy a fresh behind-the-scenes audio drop with premium members only.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

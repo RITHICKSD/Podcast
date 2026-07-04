@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonate Network | Premium Indie Podcast Studio</title>
+    <meta name="description" content="Access ad-free premium RSS feeds, exclusive episodes, behind-the-scenes video drops, and network merchandise discounts. Custom studio production space.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' x2='12' y1='19' y2='22'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body class="dark-theme">
+
+    <header id="global-header">
+        <div class="header-container">
+            <!-- Logo Section -->
+            <a href="home.html" class="header-logo" id="header-logo-btn">
+                <div class="logo-icon">
+                    <i data-lucide="mic"></i>
+                </div>
+                <span class="logo-text">RESONATE</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <!-- Home Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="home-nav-link">Home <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="home.html" class="dropdown-item" id="go-home1">Home 1</a></li>
+                            <li><a href="home2.html" class="dropdown-item" id="go-home2">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <!-- Standard Links -->
+                    <li class="nav-item"><a href="about.html" class="nav-link" id="go-about">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link" id="go-services">Services</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link" id="go-blog">Blog</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link" id="go-contact">Contact</a></li>
+                    <!-- Dashboard Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="dashboard-nav-link">Dashboard <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="user-dashboard.html" class="dropdown-item" id="go-user-dash">User Dashboard</a></li>
+                            <li><a href="admin-dashboard.html" class="dropdown-item" id="go-admin-dash">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right Controls -->
+            <div class="header-controls">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction" title="Toggle RTL/LTR">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+                <!-- Auth Button -->
+                <a href="login.html" class="login-btn" id="header-login-btn">
+                    <i data-lucide="log-in"></i>
+                    <span>Login</span>
+                </a>
+                <!-- User Avatar (Hidden until logged in) -->
+                <div class="user-profile-widget" id="header-user-widget" style="display: none;">
+                    <div class="user-avatar-btn">
+                        <img src="p6.jpg" alt="User profile" id="header-avatar-img">
+                        <span id="header-username">Premium Member</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu" class="menu-open-icon"></i>
+                <i data-lucide="x" class="menu-close-icon" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer-menu">
+        <ul class="mobile-nav-list">
+            <!-- Home Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-home-dropdown-toggle">
+                    <span>Home</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-home-menu" style="display: none;">
+                    <li><a href="home.html" class="mobile-dropdown-item" id="mob-go-home1">Home 1</a></li>
+                    <li><a href="home.html" class="mobile-dropdown-item" id="mob-go-home2">Home 2</a></li>
+                </ul>
+            </li>
+            <!-- Standard Links -->
+            <li><a href="about.html" class="mobile-nav-link" id="mob-go-about">About Us</a></li>
+            <li><a href="services.html" class="mobile-nav-link" id="mob-go-services">Our Services</a></li>
+            <li><a href="blog.html" class="mobile-nav-link" id="mob-go-blog">Blog</a></li>
+            <li><a href="contact.html" class="mobile-nav-link" id="mob-go-contact">Contact Us</a></li>
+            <!-- Dashboard Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-dashboard-dropdown-toggle">
+                    <span>Dashboard</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-dashboard-menu" style="display: none;">
+                    <li><a href="user-dashboard.html" class="mobile-dropdown-item" id="mob-go-user-dash">User Dashboard</a></li>
+                    <li><a href="admin-dashboard.html" class="mobile-dropdown-item" id="mob-go-admin-dash">Admin Dashboard</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="mobile-drawer-controls">
+            <!-- Side-by-side Toggles Row -->
+            <div class="mobile-toggles-row">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+            </div>
+            
+            <a href="login.html" class="drawer-login-btn" id="drawer-login-btn">
+                <i data-lucide="log-in"></i> Login
+            </a>
+            <div class="drawer-user-widget" id="drawer-user-widget" style="display: none; align-items: center; justify-content: space-between; width: 100%; padding: 15px 0 0; border-top: 1px solid var(--border-color);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="p6.jpg" alt="User profile" id="drawer-avatar-img" style="width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--accent-primary);">
+                    <span id="drawer-username" style="font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem;">Premium Member</span>
+                </div>
+                <button class="control-btn logout-link-btn" title="Logout" style="width: 40px; height: 40px; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: var(--accent-secondary); display: flex; align-items: center; justify-content: center;">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content wrapper for Marketing Views -->
+    <div id="marketing-container">
+        <main id="contact-view" class="view-panel" >
+            <!-- 1. Contact Hero -->
+            <section class="section-padding page-header-section" id="contact-hero">
+                <div class="section-container text-center max-width-medium">
+                    <span class="view-badge">GET IN TOUCH</span>
+                    <h1 class="page-title">Let's Make Some Noise</h1>
+                    <p class="page-lead">Have a question about show distribution, premium member accounts, or booking a physical recording slot? Choose the relevant form below.</p>
+                </div>
+            </section>
+
+            <!-- Grid of Contact & Pitch Forms -->
+            <div class="section-container form-layouts-grid">
+                <!-- 2. General Contact Form -->
+                <section class="form-container-card" id="contact-general-form">
+                    <h2>General Inquiries</h2>
+                    <p>For listener support, billing issues, or general network comments.</p>
+                    <form id="general-contact" onsubmit="handleFormSubmit(event, 'General Inquiries')">
+                        <div class="form-group">
+                            <label for="gen-name">Full Name</label>
+                            <input type="text" id="gen-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gen-email">Email Address</label>
+                            <input type="email" id="gen-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gen-subject">Subject</label>
+                            <input type="text" id="gen-subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gen-msg">Message</label>
+                            <textarea id="gen-msg" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </section>
+
+                <!-- 3. Pitch a Show Form -->
+                <section class="form-container-card" id="contact-pitch-form">
+                    <h2>Pitch Your Show to Resonate</h2>
+                    <p>Are you an existing podcaster wanting to join our advertising and premium member network?</p>
+                    <form id="pitch-podcast" onsubmit="handleFormSubmit(event, 'Podcast Pitch')">
+                        <div class="form-group">
+                            <label for="pitch-show-name">Podcast Name</label>
+                            <input type="text" id="pitch-show-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pitch-rss">Current RSS Link (if any)</label>
+                            <input type="url" id="pitch-rss" placeholder="https://example.com/feed.xml">
+                        </div>
+                        <div class="form-group">
+                            <label for="pitch-stats">Avg. Monthly Downloads</label>
+                            <input type="number" id="pitch-stats" placeholder="e.g. 5000">
+                        </div>
+                        <div class="form-group">
+                            <label for="pitch-description">Elevator Pitch & Why Resonate?</label>
+                            <textarea id="pitch-description" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-accent">Submit Podcast Pitch</button>
+                    </form>
+                </section>
+
+                <!-- 4. Studio Room Booking Form -->
+                <section class="form-container-card full-width-grid" id="contact-booking-form">
+                    <h2>Book Studio Recording Slot</h2>
+                    <p>Reserve soundproof space and engineering equipment in downtown Resonate Studios.</p>
+                    <form id="studio-booking" onsubmit="handleFormSubmit(event, 'Studio Booking')">
+                        <div class="booking-form-grid">
+                            <div class="form-group">
+                                <label for="book-room">Choose Studio Space</label>
+                                <select id="book-room" required>
+                                    <option value="Studio A">Studio A - Multi-Mic ($75/hr)</option>
+                                    <option value="Studio B">Studio B - Solo/Co-Host ($45/hr)</option>
+                                    <option value="Studio A Video">Studio A with 4K Video (+$40/hr)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-date">Choose Date</label>
+                                <input type="date" id="book-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-time">Choose Time Slot</label>
+                                <select id="book-time" required>
+                                    <option value="Morning">Morning: 9:00 AM - 12:00 PM</option>
+                                    <option value="Afternoon">Afternoon: 1:00 PM - 4:00 PM</option>
+                                    <option value="Evening">Evening: 5:00 PM - 8:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-notes">Special Engineering Requests</label>
+                                <input type="text" id="book-notes" placeholder="e.g. Need Spatial Audio mixer presets">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Request Reservation Slot</button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- 5. Interactive SVG/Canvas styled map -->
+            <section class="section-padding" id="contact-map">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Physical Office Locations</h2>
+                        <p class="section-subtitle">We are based in the historic arts district, surrounded by vinyl shops and cafes.</p>
+                    </div>
+
+                    <div class="map-container">
+                        <div id="contact-leaflet-map"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Redesigned Urgent Broadcasting Support Console -->
+            <section class="section-padding section-alt" id="contact-help">
+                <div class="section-container">
+                    <div class="ops-support-card">
+                        <div class="ops-badge-pulse">
+                            <span class="pulse-ring"></span>
+                            <span class="pulse-dot"></span>
+                            <span class="ops-status-text">CRITICAL OPS ONLINE</span>
+                        </div>
+                        <h2>Urgent Broadcasting Support</h2>
+                        <p class="ops-lead-text">Are you currently streaming live and experiencing audio packet losses, dropouts, or metadata sync errors? Connect directly with our on-duty platform engineers.</p>
+                        
+                        <div class="ops-actions-grid">
+                            <div class="ops-action-item">
+                                <div class="ops-icon-wrap"><i data-lucide="phone-call"></i></div>
+                                <div class="ops-info">
+                                    <h3>Engineers Hotline</h3>
+                                    <span class="ops-contact-val">+1 (555) 902-8840</span>
+                                    <span class="ops-meta">Direct dispatch line for active streams</span>
+                                </div>
+                            </div>
+                            <div class="ops-action-item">
+                                <div class="ops-icon-wrap"><i data-lucide="mail"></i></div>
+                                <div class="ops-info">
+                                    <h3>Priority Ops Email</h3>
+                                    <span class="ops-contact-val">ops@resonate.audio</span>
+                                    <span class="ops-meta">Sub-minute alert dispatch ticket</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ops-console-footer">
+                            <button class="btn btn-accent btn-small" onclick="pingOpsServer()">
+                                <i data-lucide="activity"></i> Run Platform Diagnostic
+                            </button>
+                            <div id="ping-latency" class="latency-indicator" >
+                                <span class="latency-dot"></span>
+                                <span id="latency-text">Ping: -- ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="global-footer">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo" href="home.html" style="cursor: pointer;">
+                        <div class="logo-icon">
+                            <i data-lucide="mic"></i>
+                        </div>
+                        <span class="logo-text">RESONATE</span>
+                    </div>
+                    <p>Supporting independent podcasters, technical journalists, and audio arts composers since 2021.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="home.html" href="home.html">Home 1</a></li>
+                        <li><a href="home.html" href="home.html">Home 2</a></li>
+                        <li><a href="home.html" href="about.html">About Manifesto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="home.html" href="services.html">Booths Booking</a></li>
+                        <li><a href="home.html" href="services.html">Post-Production</a></li>
+                        <li><a href="home.html" href="services.html">Distribution Host</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="home.html" href="contact.html">General Contact</a></li>
+                        <li><a href="home.html" href="contact.html">Pitch a Show</a></li>
+                        <li><a href="home.html" href="contact.html">Emergency Ops</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-container">
+                    <span>© 2026 Resonate Network & Audio Production Studios. All rights reserved.</span>
+                    <div class="footer-bottom-links">
+                        <a href="home.html">Privacy Policy</a>
+                        <a href="home.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

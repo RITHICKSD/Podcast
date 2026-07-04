@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonate Network | Premium Indie Podcast Studio</title>
+    <meta name="description" content="Access ad-free premium RSS feeds, exclusive episodes, behind-the-scenes video drops, and network merchandise discounts. Custom studio production space.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' x2='12' y1='19' y2='22'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body class="dark-theme">
+
+    <header id="global-header">
+        <div class="header-container">
+            <!-- Logo Section -->
+            <a href="home.html" class="header-logo" id="header-logo-btn">
+                <div class="logo-icon">
+                    <i data-lucide="mic"></i>
+                </div>
+                <span class="logo-text">RESONATE</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <!-- Home Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="home-nav-link">Home <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="home.html" class="dropdown-item" id="go-home1">Home 1</a></li>
+                            <li><a href="home2.html" class="dropdown-item" id="go-home2">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <!-- Standard Links -->
+                    <li class="nav-item"><a href="about.html" class="nav-link" id="go-about">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link" id="go-services">Services</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link" id="go-blog">Blog</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link" id="go-contact">Contact</a></li>
+                    <!-- Dashboard Dropdown -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="dashboard-nav-link">Dashboard <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="user-dashboard.html" class="dropdown-item" id="go-user-dash">User Dashboard</a></li>
+                            <li><a href="admin-dashboard.html" class="dropdown-item" id="go-admin-dash">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right Controls -->
+            <div class="header-controls">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction" title="Toggle RTL/LTR">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+                <!-- Auth Button -->
+                <a href="login.html" class="login-btn" id="header-login-btn">
+                    <i data-lucide="log-in"></i>
+                    <span>Login</span>
+                </a>
+                <!-- User Avatar (Hidden until logged in) -->
+                <div class="user-profile-widget" id="header-user-widget" style="display: none;">
+                    <div class="user-avatar-btn">
+                        <img src="p6.jpg" alt="User profile" id="header-avatar-img">
+                        <span id="header-username">Premium Member</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu" class="menu-open-icon"></i>
+                <i data-lucide="x" class="menu-close-icon" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer-menu">
+        <ul class="mobile-nav-list">
+            <!-- Home Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-home-dropdown-toggle">
+                    <span>Home</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-home-menu" style="display: none;">
+                    <li><a href="home.html" class="mobile-dropdown-item" id="mob-go-home1">Home 1</a></li>
+                    <li><a href="home.html" class="mobile-dropdown-item" id="mob-go-home2">Home 2</a></li>
+                </ul>
+            </li>
+            <!-- Standard Links -->
+            <li><a href="about.html" class="mobile-nav-link" id="mob-go-about">About Us</a></li>
+            <li><a href="services.html" class="mobile-nav-link" id="mob-go-services">Our Services</a></li>
+            <li><a href="blog.html" class="mobile-nav-link" id="mob-go-blog">Blog</a></li>
+            <li><a href="contact.html" class="mobile-nav-link" id="mob-go-contact">Contact Us</a></li>
+            <!-- Dashboard Dropdown Accordion -->
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-dashboard-dropdown-toggle">
+                    <span>Dashboard</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-dashboard-menu" style="display: none;">
+                    <li><a href="user-dashboard.html" class="mobile-dropdown-item" id="mob-go-user-dash">User Dashboard</a></li>
+                    <li><a href="admin-dashboard.html" class="mobile-dropdown-item" id="mob-go-admin-dash">Admin Dashboard</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="mobile-drawer-controls">
+            <!-- Side-by-side Toggles Row -->
+            <div class="mobile-toggles-row">
+                <!-- Theme Toggle -->
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <!-- LTR/RTL Toggle -->
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+            </div>
+            
+            <a href="login.html" class="drawer-login-btn" id="drawer-login-btn">
+                <i data-lucide="log-in"></i> Login
+            </a>
+            <div class="drawer-user-widget" id="drawer-user-widget" style="display: none; align-items: center; justify-content: space-between; width: 100%; padding: 15px 0 0; border-top: 1px solid var(--border-color);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="p6.jpg" alt="User profile" id="drawer-avatar-img" style="width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--accent-primary);">
+                    <span id="drawer-username" style="font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem;">Premium Member</span>
+                </div>
+                <button class="control-btn logout-link-btn" title="Logout" style="width: 40px; height: 40px; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: var(--accent-secondary); display: flex; align-items: center; justify-content: center;">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content wrapper for Marketing Views -->
+    <div id="marketing-container">
+        <main id="about-view" class="view-panel" >
+            <!-- 1. Manifesto / Story Section -->
+            <section class="section-padding page-header-section" id="about-story">
+                <div class="section-container text-center max-width-medium">
+                    <span class="view-badge">OUR STORY</span>
+                    <h1 class="page-title">The Audio Revolution</h1>
+                    <p class="page-lead">We started in 2021 as a collection of bedroom podcasters frustrated by corporate network algorithms. Today, we run three state-of-the-art facilities hosting 25 independent shows reaching millions of monthly ears.</p>
+                </div>
+            </section>
+
+            <!-- 2. meet the team / board -->
+            <section class="section-padding section-alt" id="about-team">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Network Directors & Operations</h2>
+                        <p class="section-subtitle">The backend team coordinating microphone logistics, ad sales, and web distribution systems.</p>
+                    </div>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <img src="a1.webp" alt="Sarah Jenkins">
+                            <h4>Sarah Jenkins</h4>
+                            <span>Co-Founder & Tech Director</span>
+                            <p>Spearheads our technical infrastructure, streaming pipelines, and server distributions.</p>
+                        </div>
+                        <div class="team-card">
+                            <img src="a2.webp" alt="Marcus Vance">
+                            <h4>Marcus Vance</h4>
+                            <span>Co-Founder & Chief Acoustician</span>
+                            <p>Designs our physical recording spaces and oversees sound engineering standards.</p>
+                        </div>
+                        <div class="team-card">
+                            <img src="a3.avif" alt="Elena Rostova">
+                            <h4>Elena Rostova</h4>
+                            <span>Creative Director</span>
+                            <p>Manages show licensing, visual art assets, and custom network composer contracts.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Network timeline -->
+            <section class="section-padding" id="about-timeline">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Our Growth Milestone Timeline</h2>
+                        <p class="section-subtitle">How we transformed from an informal collective into a premium podcast studio network.</p>
+                    </div>
+
+                    <div class="timeline-container">
+                        <!-- Timeline Node 1 -->
+                        <div class="timeline-item">
+                            <div class="time-stamp">2022</div>
+                            <div class="time-content">
+                                <h3>First Combined Studio Session</h3>
+                                <p>Sarah and Marcus merge their separate bedroom podcasts under the "Resonate Network" label, recording on a simple four-channel mixer.</p>
+                            </div>
+                        </div>
+                        <!-- Timeline Node 2 -->
+                        <div class="timeline-item">
+                            <div class="time-stamp">2023</div>
+                            <div class="time-content">
+                                <h3>1 Million Downloads Milestone</h3>
+                                <p>Three new shows join the network. We cross the 1,000,000 global download mark and move into a small office space in downtown.</p>
+                            </div>
+                        </div>
+                        <!-- Timeline Node 3 -->
+                        <div class="timeline-item">
+                            <div class="time-stamp">2024</div>
+                            <div class="time-content">
+                                <h3>Acoustic Studio Buildout</h3>
+                                <p>Marcus designs Studio A with full decoupled walls, custom bass traps, and professional microphone layouts.</p>
+                            </div>
+                        </div>
+                        <!-- Timeline Node 4 -->
+                        <div class="timeline-item">
+                            <div class="time-stamp">2025</div>
+                            <div class="time-content">
+                                <h3>Premium Subscription Launch</h3>
+                                <p>We build our ad-free RSS distribution software, launching the premium membership club for direct listener monetization.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Studio Space Gallery (p9, p10, p11) -->
+            <section class="section-padding section-alt" id="about-gallery">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Step Inside the Physical Studios</h2>
+                        <p class="section-subtitle">A glimpse of where the recording magic happens. Soundproof rooms, mixing tables, and client lounges.</p>
+                        <div class="studio-feature-grid">
+                            <div class="studio-feature-item">
+                                <i data-lucide="mic" class="studio-feature-icon"></i>
+                                <h4 class="studio-feature-title">Recording Room</h4>
+                                <p class="studio-feature-desc">Professional mic setup and acoustically treated space.</p>
+                            </div>
+                            <div class="studio-feature-item">
+                                <i data-lucide="sliders" class="studio-feature-icon"></i>
+                                <h4 class="studio-feature-title">Mixing &amp; Mastering</h4>
+                                <p class="studio-feature-desc">High‑end console with outboard gear.</p>
+                            </div>
+                            <div class="studio-feature-item">
+                                <i data-lucide="coffee" class="studio-feature-icon"></i>
+                                <h4 class="studio-feature-title">Creator Lounge</h4>
+                                <p class="studio-feature-desc">Comfortable client lounge for collaboration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Core Values -->
+            <section class="section-padding" id="about-values">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Our Operational Core Values</h2>
+                        <p class="section-subtitle">We believe independent audio is crucial for cultural diversity and technical research.</p>
+                    </div>
+
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-number">01</div>
+                            <h3>Creative Autonomy</h3>
+                            <p>Hosts retain 100% intellectual property rights. No executive censorship or corporate editorial limits.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-number">02</div>
+                            <h3>Audio Fidelity Excellence</h3>
+                            <p>We do not compromise on sound quality. Proper compression, levels, and microphone selections on every single track.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-number">03</div>
+                            <h3>Fair Creator Split</h3>
+                            <p>80% of direct premium subscription fees go directly to the creators of the shows you listen to.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Press Kit & Brand assets -->
+            <section class="section-padding section-alt" id="about-press">
+                <div class="section-container">
+                    <div class="press-kit-box">
+                        <div class="press-text">
+                            <h2>Press & Media Kit Assets</h2>
+                            <p>Are you writing about the independent audio revolution or the Resonate Network? Download our high-resolution logos, brand color specs, and co-founder press photos.</p>
+                        </div>
+                        <div class="press-actions">
+                            <a href="#" class="btn btn-primary" onclick="showPressToast(event)">
+                                <i data-lucide="download"></i> Download Media Bundle (24MB)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="global-footer">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo" href="home.html" style="cursor: pointer;">
+                        <div class="logo-icon">
+                            <i data-lucide="mic"></i>
+                        </div>
+                        <span class="logo-text">RESONATE</span>
+                    </div>
+                    <p>Supporting independent podcasters, technical journalists, and audio arts composers since 2021.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="home.html" href="home.html">Home 1</a></li>
+                        <li><a href="home.html" href="home.html">Home 2</a></li>
+                        <li><a href="home.html" href="about.html">About Manifesto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="home.html" href="services.html">Booths Booking</a></li>
+                        <li><a href="home.html" href="services.html">Post-Production</a></li>
+                        <li><a href="home.html" href="services.html">Distribution Host</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="home.html" href="contact.html">General Contact</a></li>
+                        <li><a href="home.html" href="contact.html">Pitch a Show</a></li>
+                        <li><a href="home.html" href="contact.html">Emergency Ops</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-container">
+                    <span>© 2026 Resonate Network & Audio Production Studios. All rights reserved.</span>
+                    <div class="footer-bottom-links">
+                        <a href="home.html">Privacy Policy</a>
+                        <a href="home.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

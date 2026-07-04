@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonate Network | Blog</title>
+    <meta name="description" content="Explore the latest studio notes, podcast growth tips, and audio industry insights from Resonate Network.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' x2='12' y1='19' y2='22'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dark-theme">
+
+    <header id="global-header">
+        <div class="header-container">
+            <a href="home.html" class="header-logo" id="header-logo-btn">
+                <div class="logo-icon">
+                    <i data-lucide="mic"></i>
+                </div>
+                <span class="logo-text">RESONATE</span>
+            </a>
+
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="home-nav-link">Home <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="home.html" class="dropdown-item" id="go-home1">Home 1</a></li>
+                            <li><a href="home2.html" class="dropdown-item" id="go-home2">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="about.html" class="nav-link" id="go-about">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link" id="go-services">Services</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link active" id="go-blog">Blog</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link" id="go-contact">Contact</a></li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="nav-link" id="dashboard-nav-link">Dashboard <i data-lucide="chevron-down" class="dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="user-dashboard.html" class="dropdown-item" id="go-user-dash">User Dashboard</a></li>
+                            <li><a href="admin-dashboard.html" class="dropdown-item" id="go-admin-dash">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-controls">
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Layout Direction" title="Toggle RTL/LTR">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+                <a href="login.html" class="login-btn" id="header-login-btn">
+                    <i data-lucide="log-in"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+
+            <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu" class="menu-open-icon"></i>
+                <i data-lucide="x" class="menu-close-icon" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-drawer" id="mobile-drawer-menu">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-home-dropdown-toggle">
+                    <span>Home</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-home-menu" style="display: none;">
+                    <li><a href="home.html" class="mobile-dropdown-item" id="mob-go-home1">Home 1</a></li>
+                    <li><a href="home2.html" class="mobile-dropdown-item" id="mob-go-home2">Home 2</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html" class="mobile-nav-link" id="mob-go-about">About Us</a></li>
+            <li><a href="services.html" class="mobile-nav-link" id="mob-go-services">Our Services</a></li>
+            <li><a href="blog.html" class="mobile-nav-link" id="mob-go-blog">Blog</a></li>
+            <li><a href="contact.html" class="mobile-nav-link" id="mob-go-contact">Contact Us</a></li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" id="mob-dashboard-dropdown-toggle">
+                    <span>Dashboard</span>
+                    <i data-lucide="chevron-down" class="mob-dropdown-icon"></i>
+                </a>
+                <ul class="mobile-dropdown-menu" id="mob-dashboard-menu" style="display: none;">
+                    <li><a href="user-dashboard.html" class="mobile-dropdown-item" id="mob-go-user-dash">User Dashboard</a></li>
+                    <li><a href="admin-dashboard.html" class="mobile-dropdown-item" id="mob-go-admin-dash">Admin Dashboard</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="mobile-drawer-controls">
+            <div class="mobile-toggles-row">
+                <button class="control-btn theme-toggle-btn" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <button class="control-btn rtl-toggle-btn" aria-label="Toggle Direction">
+                    <span class="rtl-text">RTL</span>
+                    <span class="ltr-text">LTR</span>
+                </button>
+            </div>
+            <a href="login.html" class="drawer-login-btn" id="drawer-login-btn">
+                <i data-lucide="log-in"></i> Login
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <section class="section-padding blog-hero">
+            <div class="section-container blog-hero-grid">
+                <div>
+                    <span class="live-badge">
+                        <span class="live-dot"></span>
+                        <span>STUDIO BLOG • INSIGHTS</span>
+                    </span>
+                    <h1 class="hero-title">Stories, strategy, and sound from the <span class="gradient-text">Resonate studio.</span></h1>
+                    <p class="hero-subtitle">Discover how indie creators grow their audience, sharpen their storytelling, and turn audio into a premium experience.</p>
+                    <div class="hero-actions">
+                        <a href="#latest-posts" class="btn btn-primary">Read Latest Posts</a>
+                        <a href="#newsletter" class="btn btn-secondary">Join the Newsletter</a>
+                    </div>
+                </div>
+                <div class="blog-hero-card">
+                    <h3>What you'll find here</h3>
+                    <ul class="blog-highlight-list">
+                        <li><i data-lucide="mic"></i> Podcast production tips</li>
+                        <li><i data-lucide="trending-up"></i> Audience growth ideas</li>
+                        <li><i data-lucide="sparkles"></i> Creative storytelling inspiration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding section-alt" id="latest-posts">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Latest from the Blog</h2>
+                    <p class="section-subtitle">A short guide to building a sharper listener experience from the very first episode.</p>
+                </div>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <span class="blog-category">Production</span>
+                        <h3>How to make every episode feel premium</h3>
+                        <p>Learn a simple formula for stronger intros, cleaner pacing, and better listener retention without overcomplicating your workflow.</p>
+                        <a href="#newsletter" class="blog-link">Explore the article</a>
+                    </article>
+                    <article class="blog-card">
+                        <span class="blog-category">Growth</span>
+                        <h3>Three ways indie shows turn casual listeners into loyal fans</h3>
+                        <p>Build connection by packaging your content around recurring rituals, useful takeaways, and a consistent release rhythm.</p>
+                        <a href="#newsletter" class="blog-link">Explore the article</a>
+                    </article>
+                    <article class="blog-card">
+                        <span class="blog-category">Storytelling</span>
+                        <h3>Why a strong narrative arc keeps people coming back</h3>
+                        <p>Use emotional tension, clear progression, and memorable moments to create episodes people remember and share.</p>
+                        <a href="#newsletter" class="blog-link">Explore the article</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" id="newsletter">
+            <div class="section-container">
+                <div class="blog-cta">
+                    <div>
+                        <span class="live-badge">
+                            <span class="live-dot"></span>
+                            <span>JOIN THE LIST</span>
+                        </span>
+                        <h2 class="section-title">Get fresh studio notes every week.</h2>
+                        <p class="section-subtitle">Subscribe for practical ideas, launch inspiration, and audio-first updates from our team.</p>
+                    </div>
+                    <a href="contact.html" class="btn btn-accent">Contact the Studio</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="global-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo" style="cursor: pointer;">
+                    <div class="logo-icon">
+                        <i data-lucide="mic"></i>
+                    </div>
+                    <span class="logo-text">RESONATE</span>
+                </div>
+                <p>Supporting independent podcasters, technical journalists, and audio arts composers since 2021.</p>
+            </div>
+            <div class="footer-links-group">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="home.html">Home One</a></li>
+                    <li><a href="home2.html">Home Two</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-group">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html">Studio Booking</a></li>
+                    <li><a href="services.html">Post-Production</a></li>
+                    <li><a href="services.html">Distribution</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-group">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html">Pitch a Show</a></li>
+                    <li><a href="contact.html">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <span>© 2026 Resonate Network & Audio Production Studios. All rights reserved.</span>
+                <div class="footer-bottom-links">
+                    <a href="home.html">Privacy Policy</a>
+                    <a href="home.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
