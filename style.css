@@ -344,6 +344,22 @@ h6 {
     color: var(--text-primary);
 }
 
+.nav-link.active {
+    color: var(--accent-primary);
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    inset-inline-start: 20px;
+    inset-inline-end: 20px;
+    height: 3px;
+    background: var(--accent-primary);
+    border-radius: 3px 3px 0 0;
+}
+
 .dropdown-icon {
     width: 16px;
     height: 16px;
@@ -390,6 +406,14 @@ h6 {
 .dropdown-item:hover {
     background-color: var(--bg-tertiary);
     color: var(--accent-primary);
+}
+
+.dropdown-item.active {
+    color: var(--accent-primary);
+    background-color: var(--bg-tertiary);
+    border-inline-start: 3px solid var(--accent-primary);
+    padding-inline-start: 17px;
+    font-weight: 700;
 }
 
 /* Right Controls */
